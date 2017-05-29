@@ -7,5 +7,6 @@
 > ___Coming Soon___
 
 [![js-happiness-style](https://cdn.rawgit.com/JedWatson/happiness/master/badge.svg)](https://github.com/JedWatson/happiness)
+[![scsss-happiness-style](https://rawgit.com/dutchenkoOleg/happiness-scss/master/assets/badge.svg)](https://github.com/dutchenkoOleg/happiness-scss)
 
 
