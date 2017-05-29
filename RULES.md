@@ -28,7 +28,7 @@ This project working in progress. So there no stable notable changes yet.
 
 ### Attribute Quotes
 
-[↑ rules list](#list-of-rules)
+[↑ rules list](#table-of-contents)
 
 Use single quotes in attribute values.  
 
@@ -58,7 +58,7 @@ span {
 
 ### BEM Depth
 
-[↑ rules list](#list-of-rules)
+[↑ rules list](#table-of-contents)
 
 Max depth `1`.  
 
@@ -104,7 +104,7 @@ _sass-lint rule - [`bem-depth`](https://github.com/sasstools/sass-lint/blob/mast
 
 ### Border Zero
 
-[↑ rules list](#list-of-rules)
+[↑ rules list](#table-of-contents)
 
 Use `none` keyword for disable border or `0` for `border-width`.  
 
@@ -138,7 +138,7 @@ _sass-lint rule - [`border-zero`](https://github.com/sasstools/sass-lint/blob/ma
 
 ### Brace Style
 
-[↑ rules list](#list-of-rules)
+[↑ rules list](#table-of-contents)
 
 Use `1tbs` brace style.  
 Single line are not allowed.
@@ -193,7 +193,7 @@ _sass-lint rule - [`brace-style`](https://github.com/sasstools/sass-lint/blob/ma
 
 ### Class Name Format
 
-[↑ rules list](#list-of-rules)
+[↑ rules list](#table-of-contents)
 
 Use [`hyphenatedbem`](http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/) convention for class names.  
 Leading underscore is allowed for no-namespace modifiers / utils / helpers (name them as you like)  
@@ -237,7 +237,7 @@ _sass-lint rule - [`class-name-format`](https://github.com/sasstools/sass-lint/b
 
 ### Clean Import Paths
 
-[↑ rules list](#list-of-rules)
+[↑ rules list](#table-of-contents)
 
 Files paths should not have leading underscores and should not have filename extensions
 
@@ -262,7 +262,7 @@ _sass-lint rule - [`clean-import-paths`](https://github.com/sasstools/sass-lint/
 
 ### Declarations Before Nesting
 
-[↑ rules list](#list-of-rules)
+[↑ rules list](#table-of-contents)
 
 Declarations should be written before nesting in a ruleset!
 
@@ -297,7 +297,7 @@ _sass-lint rule - [`declarations-before-nesting`](https://github.com/sasstools/s
 
 ### Empty Args
 
-[↑ rules list](#list-of-rules)
+[↑ rules list](#table-of-contents)
 
 Not parentheses should be included if no arguments are defined or used, when declaring or invoking a mixin
 
@@ -332,7 +332,7 @@ _sass-lint rule - [`empty-args`](https://github.com/sasstools/sass-lint/blob/mas
 
 ### Empty Line Between Blocks
 
-[↑ rules list](#list-of-rules)
+[↑ rules list](#table-of-contents)
 
 Nested blocks should include a space between the last non-comment declaration.  
 Single line rulesets are not allowed
@@ -383,7 +383,7 @@ _sass-lint rule - [`empty-line-between-blocks`](https://github.com/sasstools/sas
 
 ### Extends Before Declarations
 
-[↑ rules list](#list-of-rules)
+[↑ rules list](#table-of-contents)
 
 Extends should be written before declarations in a ruleset!
 
@@ -412,7 +412,7 @@ _sass-lint rule - [`extends-before-declarations`](https://github.com/sasstools/s
 
 ### Final Newline
 
-[↑ rules list](#list-of-rules)
+[↑ rules list](#table-of-contents)
 
 Extends should be written before declarations in a ruleset!
 
@@ -443,7 +443,7 @@ _sass-lint rule - [`final-newline`](https://github.com/sasstools/sass-lint/blob/
 
 ### Force Attribute Nesting
 
-[↑ rules list](#list-of-rules)
+[↑ rules list](#table-of-contents)
 
 Use nesting of attributes
 
@@ -494,7 +494,7 @@ input[type='reset'] {
 
 ### Force Element Nesting
 
-[↑ rules list](#list-of-rules)
+[↑ rules list](#table-of-contents)
 
 Use nesting of elements
 
@@ -560,7 +560,7 @@ a[target="_blank"] span {
 
 ### Force Pseudo Nesting
 
-[↑ rules list](#list-of-rules)
+[↑ rules list](#table-of-contents)
 
 Use nesting of pseudo elements/classes
 
@@ -608,7 +608,7 @@ p:nth-of-type(2) {
 
 ### Function Name Format
 
-[↑ rules list](#list-of-rules)
+[↑ rules list](#table-of-contents)
 
 Use `camelCase` convention for function names.  
 Leading underscore is allowed
