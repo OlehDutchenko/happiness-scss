@@ -1,0 +1,27 @@
+div {
+	p {
+		content: '';
+	}
+}
+
+.one {
+	.two {
+		position: relative;
+	}
+}
+
+.parent {
+	&__child {
+		h1 {
+			content: '';
+		}
+	}
+}
+
+a {
+	&[target='_blank'] {
+		span {
+			content: '';
+		}
+	}
+}

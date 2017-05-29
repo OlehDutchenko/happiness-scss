@@ -1,0 +1,11 @@
+@function camelCase() {
+	@return 'foo';
+}
+
+@function _leadingUnderscore($x) {
+	@return $x;
+}
+
+.foo {
+	content: camelCase('bar');
+}

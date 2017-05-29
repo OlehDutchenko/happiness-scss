@@ -17,6 +17,9 @@
 1. [Extends Before Declarations](#extends-before-declarations)
 1. [Final Newline](#final-newline)
 1. [Force Attribute Nesting](#force-attribute-nesting)
+1. [Force Element Nesting](#force-element-nesting)
+1. [Force Pseudo Nesting](#force-pseudo-nesting)
+1. [Function Name Format](#function-name-format)
 1. [lorem](#lorem)
 
 ---
@@ -32,14 +35,18 @@ Use single quotes in attribute values.
 _sass-lint rule - [`attribute-quotes`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/attribute-quotes.md)_
 
 ```scss
-// ✓ ok 
+// ✓ ok
+// --------------------------------
+
 span {
 	&[lang='pt'] {  
 		color: green;
 	}
 }
 
-// ✗ avoid 
+// ✗ avoid
+// --------------------------------
+
 span {
 	&[lang=pt] {  
 		color: green;
@@ -58,7 +65,9 @@ Max depth `1`.
 _sass-lint rule - [`bem-depth`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/bem-depth.md)_
 
 ```scss
-// ✓ ok 
+// ✓ ok
+// --------------------------------
+
 .block {
 	&__element {
 		// one element
@@ -75,7 +84,9 @@ _sass-lint rule - [`bem-depth`](https://github.com/sasstools/sass-lint/blob/mast
 	position: relative;
 }
 
-// ✗ avoid 
+// ✗ avoid
+// --------------------------------
+
 .block {
 	&__element {
 		&__subelement {
@@ -100,7 +111,9 @@ Use `none` keyword for disable border or `0` for `border-width`.
 _sass-lint rule - [`border-zero`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/border-zero.md)_
 
 ```scss
-// ✓ ok 
+// ✓ ok
+// --------------------------------
+
 .foo {
 	border: none;
 }
@@ -109,7 +122,9 @@ _sass-lint rule - [`border-zero`](https://github.com/sasstools/sass-lint/blob/ma
 	border-width: 0;
 }
 
-// ✗ avoid 
+// ✗ avoid
+// --------------------------------
+
 .foo {
 	border: 0;
 }
@@ -131,25 +146,33 @@ Single line are not allowed.
 _sass-lint rule - [`brace-style`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/brace-style.md)_
 
 ```scss
-// ✓ ok 
+// ✓ ok
+// --------------------------------
+
 .foo {
 	content: 'foo';
 }
 
-// ✗ avoid 
+// ✗ avoid
+// --------------------------------
+
 .foo
 {
 	content: 'foo';
 }
 
-// ✓ ok 
+// ✓ ok
+// --------------------------------
+
 @if ($foo) {
 	$bar: 'bar';
 } @else {
 	$bar: false;
 }
 
-// ✗ avoid 
+// ✗ avoid
+// --------------------------------
+
 @if ($foo) {
 	$bar: 'bar';
 }
@@ -157,7 +180,9 @@ _sass-lint rule - [`brace-style`](https://github.com/sasstools/sass-lint/blob/ma
 	$bar: false;
 }
 
-// ✗ avoid single line
+// ✗ avoid single lin
+// --------------------------------
+
 .foo { content: 'foo'; }
 
 @if ($foo) { $bar: 'foo'; }
@@ -177,7 +202,9 @@ _sass-lint rule - [`class-name-format`](https://github.com/sasstools/sass-lint/b
 
 
 ```scss
-// ✓ ok 
+// ✓ ok
+// --------------------------------
+
 .block__element {
 	position: relative;
 	width: 50%;
@@ -188,11 +215,15 @@ _sass-lint rule - [`class-name-format`](https://github.com/sasstools/sass-lint/b
 }
 
 // ✓  allow-leading-underscore
+// --------------------------------
+
 ._primary-color {
 	color: $color-primary;
 }
 
-// ✗ avoid 
+// ✗ avoid
+// --------------------------------
+
 .HYPHENATED-UPPERCASE {
 	content: '';
 }
@@ -214,11 +245,15 @@ _sass-lint rule - [`clean-import-paths`](https://github.com/sasstools/sass-lint/
 
 
 ```scss
-// ✓ ok 
+// ✓ ok
+// --------------------------------
+
 @import 'private';
 @import '_variables/colors';
 
-// ✗ avoid 
+// ✗ avoid
+// --------------------------------
+
 @import '_private';
 @import 'variables/colors.scss';
 ```
@@ -235,7 +270,9 @@ _sass-lint rule - [`declarations-before-nesting`](https://github.com/sasstools/s
 
 
 ```scss
-// ✓ ok 
+// ✓ ok
+// --------------------------------
+
 .parent-block {
 	content: 'baz';
 
@@ -244,7 +281,9 @@ _sass-lint rule - [`declarations-before-nesting`](https://github.com/sasstools/s
 	}
 }
 
-// ✗ avoid 
+// ✗ avoid
+// --------------------------------
+
 .parent-block  {
 	&__inner-element {
 		content: 'qux';
@@ -266,7 +305,9 @@ _sass-lint rule - [`empty-args`](https://github.com/sasstools/sass-lint/blob/mas
 
 
 ```scss
-// ✓ ok 
+// ✓ ok
+// --------------------------------
+
 @mixin bar {
 	padding: 10px;
 }
@@ -275,7 +316,9 @@ _sass-lint rule - [`empty-args`](https://github.com/sasstools/sass-lint/blob/mas
 	@include bar;
 }
 
-// ✗ avoid 
+// ✗ avoid
+// --------------------------------
+
 @mixin foo() {
 	padding: 10px;
 }
@@ -298,7 +341,9 @@ _sass-lint rule - [`empty-line-between-blocks`](https://github.com/sasstools/sas
 
 
 ```scss
-// ✓ ok 
+// ✓ ok
+// --------------------------------
+
 .foo {
 	content: 'foo';
 
@@ -312,7 +357,9 @@ _sass-lint rule - [`empty-line-between-blocks`](https://github.com/sasstools/sas
 	}
 }
 
-// ✗ avoid 
+// ✗ avoid
+// --------------------------------
+
 .foo {
 	content: 'foo';
 	.bar {
@@ -324,7 +371,9 @@ _sass-lint rule - [`empty-line-between-blocks`](https://github.com/sasstools/sas
 	}
 }
 
-// ✗ allow-single-line-rulesets
+// ✗ not allow-single-line-rulesets
+// --------------------------------
+
 .foo { content: 'foo'; }
 .bar { content: 'bar'; }
 .baz { content: 'baz'; }
@@ -342,13 +391,17 @@ _sass-lint rule - [`extends-before-declarations`](https://github.com/sasstools/s
 
 
 ```scss
-// ✓ ok 
+// ✓ ok
+// --------------------------------
+
 .foo {
 	@extend %bar;
 	content: 'baz';
 }
 
-// ✗ avoid 
+// ✗ avoid
+// --------------------------------
+
 .foo {
 	content: 'baz';
 	@extend %bar;
@@ -367,7 +420,9 @@ _sass-lint rule - [`final-newline`](https://github.com/sasstools/sass-lint/blob/
 
 
 ```scss
-// ✓ ok 
+// ✓ ok
+// --------------------------------
+
 .foo {
 	content: 'bar';
 }
@@ -376,7 +431,9 @@ _sass-lint rule - [`final-newline`](https://github.com/sasstools/sass-lint/blob/
 
 
 ```scss
-// ✗ avoid 
+// ✗ avoid
+// --------------------------------
+
 .foo {
 	content: 'bar';
 } // No newline at end of file
@@ -388,13 +445,15 @@ _sass-lint rule - [`final-newline`](https://github.com/sasstools/sass-lint/blob/
 
 [↑ rules list](#list-of-rules)
 
-Use nesting attributes
+Use nesting of attributes
 
 _sass-lint rule - [`force-attribute-nesting`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/force-attribute-nesting.md)_
 
 
 ```scss
-// ✓ ok 
+// ✓ ok
+// --------------------------------
+
 input {
 	&[type='submit'] {
 		font-weight: bold;
@@ -413,7 +472,9 @@ input {
 	}
 }
 
-// ✗ avoid 
+// ✗ avoid
+// --------------------------------
+
 input[type='submit'] {
 	font-weight: bold;
 }
@@ -427,6 +488,166 @@ input[type='reset'] {
 		padding: 0;
 	}
 }
+```
+
+---
+
+### Force Element Nesting
+
+[↑ rules list](#list-of-rules)
+
+Use nesting of elements
+
+_sass-lint rule - [`force-element-nesting`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/force-element-nesting.md)_
+
+
+```scss
+// ✓ ok
+// --------------------------------
+
+div {
+	p {
+		content: '';
+	}
+}
+
+.one {
+	.two {
+		position: relative;
+	}
+}
+
+.parent {
+	&__child {
+		h1 {
+			content: '';
+		}
+	}
+}
+
+a {
+	&[target='_blank'] {
+		span {
+			content: '';
+		}
+	}
+}
+
+
+// ✗ avoid
+// --------------------------------
+
+div p {
+	content: '';
+}
+
+.parent {
+	&__child h1 {
+		content: '';
+	}
+}
+
+.one .two {
+	position: relative;
+}
+
+a[target="_blank"] span {
+	content: '';
+}
+```
+
+---
+
+### Force Pseudo Nesting
+
+[↑ rules list](#list-of-rules)
+
+Use nesting of pseudo elements/classes
+
+_sass-lint rule - [`force-pseudo-nesting`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/force-pseudo-nesting.md)_
+
+
+```scss
+// ✓ ok
+// --------------------------------
+
+p {
+	&:nth-of-type(2) {
+		margin: 0;
+	}
+}
+
+.parent {
+	.child {
+		p {
+			&::first-line {
+				font-size: 125%;
+			}
+		}
+	}
+}
+
+
+// ✗ avoid
+// --------------------------------
+
+p:nth-of-type(2) {
+	margin: 0;
+}
+
+.parent {
+	.child {
+		p::first-line {
+			font-size: 125%;
+		}
+	}
+}
+```
+
+---
+
+### Function Name Format
+
+[↑ rules list](#list-of-rules)
+
+Use `camelCase` convention for function names.  
+Leading underscore is allowed
+
+_sass-lint rule - [`function-name-format`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/function-name-format.md)_
+
+
+```scss
+// ✓ ok
+// --------------------------------
+
+@function camelCase() {
+	@return 'foo';
+}
+
+@function _leadingUnderscore($x) {
+	@return $x;
+}
+
+.foo {
+	content: camelCase('bar');
+}
+
+
+// ✗ avoid
+// --------------------------------
+
+@function HYPHENATED-UPPERCASE() {
+	@return 'foo';
+}
+
+.foo {
+	content: snake_case();
+}
+
+@function hyphenated-lowercase() {
+	@return 'foo';
+}
+
 ```
 
 ---

@@ -47,10 +47,20 @@ rules:
     -
       include: true
   force-attribute-nesting: 2
+  force-element-nesting: 2
+  force-pseudo-nesting: 2
+  function-name-format:
+    - 2
+    -
+      convention: camelcase
   indentation:
     - 2
     -
       size: tab
+  nesting-depth:
+    - 2
+    -
+      max-depth: 5
   no-ids: 2
   no-qualifying-elements:
     - 2
