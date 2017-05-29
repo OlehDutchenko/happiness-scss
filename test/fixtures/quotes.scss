@@ -1,0 +1,9 @@
+.foo {
+	content: 'bar';
+}
+
+span {
+	&[lang='pt'] {
+		text-decoration: underline;
+	}
+}

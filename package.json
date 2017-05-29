@@ -1,19 +1,29 @@
 {
   "name": "happiness-scss",
-  "version": "0.0.0",
-  "description": "Sass happiness",
+  "version": "0.0.1",
+  "description": "Sass happiness linter based on sass-lint",
   "main": "index.js",
+  "bin": {
+    "happiness-scss": "./bin/happiness-scss.js"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "happiness \"./*.js\" --verbose | snazzy && echo \"happiness-scss version:\" && happiness-scss -V && happiness-scss -v -q -f stylish"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dutchenkoOleg/happiness-scss.git"
   },
-  "author": "Oleg Dutchenko <dutchenko.o.wezom@gmail.com>",
+  "author": "Oleg Dutchenko <dutchenko.o.dev@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/dutchenkoOleg/happiness-scss/issues"
   },
-  "homepage": "https://github.com/dutchenkoOleg/happiness-scss#readme"
+  "homepage": "https://github.com/dutchenkoOleg/happiness-scss#readme",
+  "dependencies": {
+    "sass-lint": "^1.10.2"
+  },
+  "devDependencies": {
+    "happiness": "^7.1.2",
+    "snazzy": "^7.0.0"
+  }
 }

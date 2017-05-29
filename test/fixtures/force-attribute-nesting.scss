@@ -1,0 +1,9 @@
+input {
+	&[type='submit'] {
+		font-weight: bold;
+	}
+
+	&[type='reset'] {
+		font-size: 2rem;
+	}
+}

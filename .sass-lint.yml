@@ -1,0 +1,24 @@
+files:
+  include:
+    - './**/*.s+(a|c)ss'
+  ignore:
+    - './node_modules/**'
+rules:
+  class-name-format:
+    - 2
+    -
+      convention: hyphenatedbem
+  force-attribute-nesting: 2
+  indentation:
+    - 2
+    -
+      size: tab
+  no-ids: 2
+  no-qualifying-elements:
+    - 2
+    -
+      allow-element-with-attribute: true
+  quotes:
+    - 2
+    -
+      style: single

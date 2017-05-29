@@ -1,0 +1,28 @@
+.block {
+	position: relative;
+
+	// element
+	&__element {
+		border: 1px solid;
+
+		// modifier
+		&--modifier {
+			border-style: dashed;
+		}
+	}
+}
+
+// two and more words in names
+.named-block {
+	position: relative;
+
+	// element
+	&__inner-element {
+		border: 1px solid;
+
+		// modifier
+		&--primary-modifier {
+			border-style: dashed;
+		}
+	}
+}
