@@ -2,7 +2,7 @@
 
 :back: [README.md](./README.md)
 
-> _list of rules_
+## List of rules
 
 ---
 
@@ -11,17 +11,17 @@ This project working in progress. So there no stable notable changes yet.
 ### Attribute Quotes
 
 Use single quotes in attribute values.  
-sass-lint [`attribute-quotes`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/attribute-quotes.md)
+sass-lint rule - [`attribute-quotes`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/attribute-quotes.md)
 
 ```scss
 // ✓ ok 
 span[lang='pt'] {  
-  color: green;
+	color: green;
 }
 
 // ✗ avoid 
 span[lang=pt] {  
-  color: green;
+	color: green;
 }
 ```
 
@@ -30,7 +30,7 @@ span[lang=pt] {
 ### BEM Depth
 
 Max depth `1`.  
-sass-lint [`bem-depth`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/bem-depth.md)
+sass-lint rule - [`bem-depth`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/bem-depth.md)
 
 ```scss
 // ✓ ok 
@@ -69,7 +69,7 @@ sass-lint [`bem-depth`](https://github.com/sasstools/sass-lint/blob/master/docs/
 ### Border Zero
 
 Use `none` keyword for disable border or `0` for `border-width`.  
-sass-lint [`border-zero`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/border-zero.md)
+sass-lint rule - [`border-zero`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/border-zero.md)
 
 ```scss
 // ✓ ok 
@@ -90,9 +90,3 @@ sass-lint [`border-zero`](https://github.com/sasstools/sass-lint/blob/master/doc
 	border-right: 0;
 }
 ```
-
-
-
-
-
-
