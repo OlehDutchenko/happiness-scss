@@ -16,6 +16,11 @@ rules:
     - 2
     -
       convention: none
+  brace-style:
+    - 2
+    -
+      style: 1tbs
+      allow-single-line: false
   class-name-format:
     - 2
     -
