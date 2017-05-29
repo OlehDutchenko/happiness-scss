@@ -25,6 +25,27 @@ rules:
     - 2
     -
       convention: hyphenatedbem
+      allow-leading-underscore: true
+  clean-import-paths:
+    - 2
+    -
+      leading-underscore: false
+      filename-extension: false
+  declarations-before-nesting: 2
+  empty-args:
+    - 2
+    -
+      include: false
+  empty-line-between-blocks:
+    - 2
+    -
+      include: true
+      allow-single-line-rulesets: false
+  extends-before-declarations: 2
+  final-newline:
+    - 2
+    -
+      include: true
   force-attribute-nesting: 2
   indentation:
     - 2

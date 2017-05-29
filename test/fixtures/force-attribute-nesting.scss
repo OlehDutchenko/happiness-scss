@@ -7,3 +7,11 @@ input {
 		font-size: 2rem;
 	}
 }
+
+.form {
+	&__input {
+		&[type='text'] {
+			padding: 0;
+		}
+	}
+}
