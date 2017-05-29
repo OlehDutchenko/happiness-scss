@@ -31,8 +31,6 @@ var program = require('commander'),
 	meta = require('../package.json'),
 	lint = require('sass-lint'); // change path to linter
 
-require('../index');
-
 var configPath,
 	config,
 	configOptions = {},
