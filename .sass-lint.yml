@@ -4,6 +4,18 @@ files:
   ignore:
     - './node_modules/**'
 rules:
+  attribute-quotes:
+    - 2
+    -
+      include: true
+  bem-depth:
+    - 2
+    -
+      max-depth: 1
+  border-zero:
+    - 2
+    -
+      convention: none
   class-name-format:
     - 2
     -

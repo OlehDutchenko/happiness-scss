@@ -1,0 +1,15 @@
+.block {
+	&__element {
+		position: static;
+	}
+}
+
+.sub-block {
+	&__sub-element {
+		position: fixed;
+	}
+}
+
+.block__element {
+	position: relative;
+}
