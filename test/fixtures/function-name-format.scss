@@ -1,0 +1,11 @@
+@function hyphenated-lowercase() {
+	@return 'foo';
+}
+
+@function _leading-underscore($x) {
+	@return $x;
+}
+
+.foo {
+	content: hyphenated-lowercase('bar');
+}

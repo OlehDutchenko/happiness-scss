@@ -20,10 +20,13 @@ are welcome:
 ## Javascript Code Style
 
 [![happiness][happiness-image]][happiness-url]
+[![scss happiness style](https://cdn.rawgit.com/dutchenkoOleg/happiness-scss/master/badge.svg)](https://github.com/dutchenkoOleg/happiness-scss)
 
-This repository uses [`happiness`][happiness-url] to maintain code style and consistency,
+This repository uses [`happiness`][happiness-url] and [`happiness-scss`](https://github.com/dutchenkoOleg/happiness-scss) to maintain code style and consistency,
 and to avoid style arguments.  
- ***So you also need to follow this  code style!*** 
+ ***So you also need to follow this code styles!*** 
+ 
+ Run `npm test` for check outs.
 
 [happiness-image]: https://cdn.rawgit.com/JedWatson/happiness/master/badge.svg
 [happiness-url]: https://github.com/JedWatson/happiness

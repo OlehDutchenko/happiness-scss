@@ -1,0 +1,11 @@
+.foo {
+	// not empty
+}
+
+.bar {
+	content: 'baz';
+
+	.qux {
+		// position: relative
+	}
+}

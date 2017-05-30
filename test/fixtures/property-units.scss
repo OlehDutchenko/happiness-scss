@@ -1,0 +1,15 @@
+.block {
+	padding-top: 10%;
+	border-bottom-width: 5rem;
+	border-top-width: 20px;
+	width: 50vw;
+	height: 50vh;
+	margin: 1em 0;
+	font-size: 15vmax;
+	transform: rotate(45deg);
+	transition: color .2s ease;
+
+	&__element {
+		font-size: 5vmin;
+	}
+}

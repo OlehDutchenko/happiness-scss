@@ -1,0 +1,7 @@
+.parent-block {
+	content: 'baz';
+
+	&__inner-element {
+		content: 'qux';
+	}
+}

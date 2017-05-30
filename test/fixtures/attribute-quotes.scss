@@ -1,7 +1,11 @@
-[lang='pt'] {
-	text-decoration: underline;
+span {
+	&[lang='pt'] {
+		text-decoration: underline;
+	}
 }
 
-[class^='main'] {
-	text-decoration: none;
+strong {
+	&[class^='main'] {
+		text-decoration: none;
+	}
 }

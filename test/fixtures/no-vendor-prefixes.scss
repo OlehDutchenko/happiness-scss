@@ -1,0 +1,11 @@
+html {
+	-webkit-tap-highlight-color: $link-color-hover;
+}
+
+button,
+input {
+	&::-moz-focus-inner {
+		border-width: 0;
+		padding: 0;
+	}
+}

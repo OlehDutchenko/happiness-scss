@@ -1,0 +1,17 @@
+root = true
+
+# Для всех файлов используем unix-совместимые переносы строк
+[*]
+charset = utf-8
+indent_style = tab
+indent_size = 4
+insert_final_new_line = true
+
+[*.md]
+indent_style = tab
+indent_size = 4
+
+# Только для package.json
+[{*.yml, package.json, yarn.lock}]
+indent_style = space
+indent_size = 2

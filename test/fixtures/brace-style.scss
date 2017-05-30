@@ -1,0 +1,10 @@
+@if ($foo) {
+	$bar: 'bar';
+} @else {
+	$bar: false;
+}
+
+.foo,
+.bar {
+	content: 'bar';
+}

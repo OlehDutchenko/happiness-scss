@@ -1,0 +1,17 @@
+$foo-color: #456;
+$bar-color: #ddd;
+$baz-color: #fff;
+
+.bar {
+	background: linear-gradient(top, $foo-color, $bar-color);
+}
+
+.baz {
+	color: $baz-color;
+}
+
+$quz-color: #abcdef;
+
+.qux {
+	color: $quz-color;
+}

@@ -1,0 +1,13 @@
+.parent {
+	&__child {
+		&--is-acitve {
+			.no-touchevents & {
+				p {
+					&::first-line {
+						font-weight: bold;
+					}
+				}
+			}
+		}
+	}
+}
