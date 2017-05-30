@@ -1,6 +1,5 @@
 options:
   formatter: stylish
-  max-warnings: 50
   verbose: true
   no-exit: true
 files:
@@ -170,12 +169,17 @@ rules:
         - rem
         - px
         - '%'
+        - ms
         - s
         - deg
+        - grad
+        - rad
+        - turn
         - vw
         - vh
         - vmax
         - vmin
+        - dpi
   pseudo-element: 2
   quotes:
     - 2

@@ -9,7 +9,7 @@
 // Imports
 // ----------------------------------------
 
-var sassLint = require('sass-lint');
+const sassLint = require('sass-lint');
 
 // ----------------------------------------
 // Private

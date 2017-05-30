@@ -9,8 +9,8 @@
 // Imports
 // ----------------------------------------
 
-var Linter = require('./linter');
-var path = require('path');
+const Linter = require('./linter');
+const path = require('path');
 
 // ----------------------------------------
 // Private

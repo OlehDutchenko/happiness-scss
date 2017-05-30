@@ -32,6 +32,8 @@ var program = require('commander'),
 	meta = require('../package.json'),
 	lint = require('sass-lint'); // change path to linter
 
+delete meta.sasslintConfig;
+
 var configPath = path.join(__dirname, '../.sass-lint.yml'),
 	config,
 	configOptions = {},
@@ -62,14 +64,14 @@ var detectPattern = function (pattern, userConfig) {
 program
 	.version(meta.version)
 	.usage('[options] <pattern>')
-	// .option('-c, --config [path]', 'path to custom config file. Note! Your config will be overwritten by happiness config') // disable user config
+	// .option('-c, --config [path]', 'path to custom config file') // disable user config
 	.option('-i, --ignore [pattern]', 'pattern to ignore. For multiple ignores, separate each pattern by `, ` within a string')
-	.option('-q, --no-exit', 'do not exit on errors')
-	.option('-v, --verbose', 'verbose output')
+	// .option('-q, --no-exit', 'do not exit on errors') // always no-exit
+	// .option('-v, --verbose', 'verbose output') // always verbose
 	.option('-f, --format [format]', 'pass one of the available eslint formats')
 	.option('-o, --output [output]', 'the path and filename where you would like output to be written')
-	.option('-s, --syntax [syntax]', 'syntax to evaluate the file(s) with (either sass or scss)')
-	.option('--max-warnings [integer]', 'Number of warnings to trigger nonzero exit code')
+	// .option('-s, --syntax [syntax]', 'syntax to evaluate the file(s) with (either sass or scss)') // filename extension-based syntax detection
+	// .option('--max-warnings [integer]', 'Number of warnings to trigger nonzero exit code') // disable
 	.parse(process.argv);
 
 configOptions.files = configOptions.files || {};
@@ -81,6 +83,7 @@ configOptions.options = configOptions.options || {};
 
 if (program.ignore && program.ignore !== true) {
 	configOptions.files.ignore = program.ignore.split(', ');
+	configOptions.files.ignore.push('./node_modules/**'); // always ignore node_modules
 }
 
 if (program.syntax && ['sass', 'scss'].indexOf(program.syntax) > -1) {

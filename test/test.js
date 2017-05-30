@@ -9,7 +9,11 @@
 // Imports
 // ----------------------------------------
 
-var happinessScss = require('../index');
+const happinessScss = require('../index');
+
+// ----------------------------------------
+// Test
+// ----------------------------------------
 
 happinessScss.lintFiles('./test/fixtures/function-name-format.scss', false, function(err, data) {
 	if (err) {
