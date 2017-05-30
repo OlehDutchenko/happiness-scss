@@ -105,11 +105,28 @@ rules:
       allow-map-identifiers: true
       allow-rgba: true
       allow-variable-identifiers: true
+  no-combinators: 2
+  no-css-comments: 2
+  no-debug: 2
+  no-disallowed-properties:
+    - 2
+    -
+      properties:
+        - zoom
+        - '@document'
+  no-duplicate-properties:
+    - 2
+    -
+      exclude:
+        - display
+  no-empty-rulesets: 2
+  no-extends: 0
   no-ids: 2
   no-qualifying-elements:
     - 2
     -
       allow-element-with-attribute: true
+  no-warn: 2
   quotes:
     - 2
     -

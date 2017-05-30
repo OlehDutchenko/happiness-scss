@@ -33,8 +33,16 @@
 1. [No Color Hex](#no-color-hex)
 1. [No Color Keyword](#no-color-keywords)
 1. [No Color Literals](#no-color-literals)
-1. [lorem](#lorem)
+1. [No Combinators](#no-combinators)
+1. [No CSS Comments](#no-css-comments)
+1. [No Debug](#no-debug)
+1. [No Disallowed Properties](#no-disallowed-properties)
+1. [No Duplicate Properties](#no-duplicate-properties)
+1. [No Empty Rulesets](#no-empty-rulesets)
+1. [No Extends](#no-extends)
 1. [No IDs](#no-ids)
+1. [lorem](#lorem)
+1. [No Warn](#no-warn)
 
 ---
 
@@ -66,6 +74,13 @@ span {
 		color: green;
 	}
 }
+
+span {
+	&[lang="pt"] {  
+		color: green;
+	}
+}
+
 ```
 
 ---
@@ -112,6 +127,7 @@ _sass-lint rule - [`bem-depth`](https://github.com/sasstools/sass-lint/blob/mast
 .block__element__subelement__subelement-two {
 	// three elements
 }
+
 ```
 
 ---
@@ -120,7 +136,7 @@ _sass-lint rule - [`bem-depth`](https://github.com/sasstools/sass-lint/blob/mast
 
 [↑ rules list](#table-of-contents)
 
-Use `none` keyword for disable border or `0` for `border-width`.  
+Use `none` keyword for disable border or `0` for `border-width` property.  
 
 _sass-lint rule - [`border-zero`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/border-zero.md)_
 
@@ -146,6 +162,7 @@ _sass-lint rule - [`border-zero`](https://github.com/sasstools/sass-lint/blob/ma
 .bar {
 	border-right: 0;
 }
+
 ```
 
 ---
@@ -155,7 +172,7 @@ _sass-lint rule - [`border-zero`](https://github.com/sasstools/sass-lint/blob/ma
 [↑ rules list](#table-of-contents)
 
 Use `1tbs` brace style.  
-Single line are not allowed.
+Single line are disallowed.
 
 _sass-lint rule - [`brace-style`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/brace-style.md)_
 
@@ -194,13 +211,14 @@ _sass-lint rule - [`brace-style`](https://github.com/sasstools/sass-lint/blob/ma
 	$bar: false;
 }
 
-// ✗ avoid single lin
+// ✗ avoid single line
 // --------------------------------
 
 .foo { content: 'foo'; }
 
 @if ($foo) { $bar: 'foo'; }
 @else { $bar: false; }
+
 ```
 
 ---
@@ -245,6 +263,7 @@ _sass-lint rule - [`class-name-format`](https://github.com/sasstools/sass-lint/b
 .camelCase {
 	@extend .snake_case;
 }
+
 ```
 
 ---
@@ -270,6 +289,7 @@ _sass-lint rule - [`clean-import-paths`](https://github.com/sasstools/sass-lint/
 
 @import '_private';
 @import 'variables/colors.scss';
+
 ```
 
 ---
@@ -305,6 +325,7 @@ _sass-lint rule - [`declarations-before-nesting`](https://github.com/sasstools/s
   
 	content: 'baz';
 }
+
 ```
 
 ---
@@ -351,7 +372,7 @@ _sass-lint rule - [`empty-args`](https://github.com/sasstools/sass-lint/blob/mas
 [↑ rules list](#table-of-contents)
 
 Nested blocks should include a space between the last non-comment declaration.  
-Single line rulesets are not allowed
+Single line rulesets are disallowed
 
 _sass-lint rule - [`empty-line-between-blocks`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/empty-line-between-blocks.md)_
 
@@ -366,7 +387,7 @@ _sass-lint rule - [`empty-line-between-blocks`](https://github.com/sasstools/sas
 	.bar {
 		content: 'bar';
 
-        // Waldo
+		// Waldo
 		&--baz {
 			content: 'baz';
 		}
@@ -380,7 +401,7 @@ _sass-lint rule - [`empty-line-between-blocks`](https://github.com/sasstools/sas
 	content: 'foo';
 	.bar {
 		content: 'bar';
-        // Waldo
+		// Waldo
 		&--baz {
 			content: 'baz';
 		}
@@ -393,6 +414,7 @@ _sass-lint rule - [`empty-line-between-blocks`](https://github.com/sasstools/sas
 .foo { content: 'foo'; }
 .bar { content: 'bar'; }
 .baz { content: 'baz'; }
+
 ```
 
 ---
@@ -412,6 +434,7 @@ _sass-lint rule - [`extends-before-declarations`](https://github.com/sasstools/s
 
 .foo {
 	@extend %bar;
+
 	content: 'baz';
 }
 
@@ -420,8 +443,10 @@ _sass-lint rule - [`extends-before-declarations`](https://github.com/sasstools/s
 
 .foo {
 	content: 'baz';
+
 	@extend %bar;
 }
+
 ```
 
 ---
@@ -504,6 +529,7 @@ input[type='reset'] {
 		padding: 0;
 	}
 }
+
 ```
 
 ---
@@ -570,6 +596,7 @@ div p {
 a[target="_blank"] span {
 	content: '';
 }
+
 ```
 
 ---
@@ -618,6 +645,7 @@ p:nth-of-type(2) {
 		}
 	}
 }
+
 ```
 
 ---
@@ -738,14 +766,6 @@ $foo-color: #4a5a6b;
 $bar-color: #ddd;
 $baz-color: #abcdef;
 
-.bar {
-	background: linear-gradient(top, $foo-color, $bar-color);
-}
-
-.baz {
-	color: $baz-color;
-}
-
 // ✗ avoid
 // --------------------------------
 
@@ -753,13 +773,6 @@ $foo-color: #4A5A6B;
 $bar-color: #DDD;
 $baz-color: #ABCDEF;
 
-.bar {
-	background: linear-gradient(top, $foo-color, $bar-color);
-}
-
-.baz {
-	color: $baz-color;
-}
 ```
 
 ---
@@ -799,6 +812,7 @@ html {
   // position
   position: relative;
 }
+
 ```
 
 ---
@@ -891,6 +905,7 @@ _sass-lint rule - [`mixin-name-format`](https://github.com/sasstools/sass-lint/b
 .foo {
 	@include snake_case();
 }
+
 ```
 
 ---
@@ -939,6 +954,7 @@ _sass-lint rule - [`mixins-before-declarations`](https://github.com/sasstools/sa
 
 	@include baz();
 }
+
 ```
 
 ---
@@ -990,6 +1006,7 @@ _sass-lint rule - [`nesting-depth`](https://github.com/sasstools/sass-lint/blob/
 		}
 	}
 }
+
 ```
 
 ---
@@ -1034,7 +1051,6 @@ $new-red: #f00;
 	color: $new-red;
 }
 
-
 // ✗ avoid
 // --------------------------------
 
@@ -1043,8 +1059,411 @@ $new-red: red;
 .foo {
 	color: $new-red;
 }
+
 ```
 
 
+---
+
+### No Color Literals
+
+[↑ rules list](#table-of-contents)
+
+Color literals are allowed. 
+
+- `allow-map-identifiers: true`
+- `allow-rgba: true`
+- `allow-variable-identifiers: true`
+
+_sass-lint rule - [`no-color-literals`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/no-color-literals.md)_
+
+```scss
+// ✓ ok
+// --------------------------------
+
+$color-white: #fff;
+
+.background {
+	background: 1px solid $color-white;
+}
+
+.hex {
+	color: $color-white;
+}
+
+// rgb function passed directly as function argument
+.adj {
+	color: adjust-color(rgb(255, 0, 0), $blue: 5);
+}
+
+// hsl function passed directly as function argument
+.scale {
+	color: scale-color(hsl(120, 70%, 80%), $lightness: 50%);
+}
+
+// hsl function passed directly as function argument
+.change {
+	color: change-color(hsl(25, 100%, 80%), $lightness: 40%, $alpha: .8);
+}
+
+// color literal passed directly as function argument
+.function {
+	color: test($color-white);
+}
+
+// color functions used directly as property values
+.rgb {
+	color: rgb(255, 255, 255);
+	background-color: rgb($color-white);
+}
+
+.rgba {
+	color: rgba(255, 255, 255, .3);
+	background-color: rgb($color-white, .5);
+}
+
+.hsl {
+	color: hsl(40, 50%, 50%);
+	background-color: hsl($color-white);
+}
+
+.hsla {
+	color: hsla(40, 50%, 50%, .3);
+	background-color: hsla($color-white, .5);
+}
+
+```
 
 
+---
+
+### No Combinators
+
+[↑ rules list](#table-of-contents)
+
+Do not use of combinators.
+
+_sass-lint rule - [`no-combinators`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/no-combinators.md)_
+
+```scss
+// ✓ ok
+// --------------------------------
+
+.foo {
+	.bar {
+		content: 'qux';
+	}
+}
+
+.block {
+	&__element {
+		.sub-block {
+			position: relative;
+		}
+	}
+}
+
+.block {
+	&__element {
+		span {
+			position: relative;
+		}
+	}
+}
+
+// ✗ avoid
+// --------------------------------
+
+.foo + .bar {
+	content: 'qux';
+}
+
+.foo ~ .bar {
+	content: 'qux';
+}
+
+.foo > .bar {
+	content: 'qux';
+}
+
+.foo .bar {
+	content: 'qux';
+}
+
+.block {
+	&__element {
+		> span {
+			position: relative;
+		}
+	}
+}
+
+```
+
+
+---
+
+### No CSS Comments
+
+[↑ rules list](#table-of-contents)
+
+Do not use of CSS comments.  
+Bang comments (`/*! */`, will be printed even in minified mode) are still allowed.
+
+_sass-lint rule - [`no-css-comments`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/no-css-comments.md)_
+
+```scss
+// ✓ ok
+// --------------------------------
+
+// This is a good comment
+
+// =========
+// This is a good comment
+// =========
+
+//////////////////
+// This is a good comment
+//////////////////
+
+/*! This is a good bang comment */
+
+/*!
+  * This is a good bang comment
+**/
+
+// ✗ avoid
+// --------------------------------
+
+/* This comment will appear in your compiled css */
+
+/*
+ * Mulitline comments are bad
+ */
+
+```
+
+
+---
+
+### No Debug
+
+[↑ rules list](#table-of-contents)
+
+`@debug` statements are disallowed to be used.
+
+_sass-lint rule - [`no-debug`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/no-debug.md)_
+
+```scss
+// ✗ avoid
+// --------------------------------
+
+@debug 'foo';
+
+```
+
+
+---
+
+### No Disallowed Properties
+
+[↑ rules list](#table-of-contents)
+
+Do not use of properties: 
+- [`zoom`](https://developer.mozilla.org/ru/docs/Web/CSS/zoom)
+- [`@document`](https://developer.mozilla.org/ru/docs/Web/CSS/@document)
+
+_sass-lint rule - [`no-disallowed-properties`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/no-disallowed-properties.md)_
+
+```scss
+// ✗ avoid
+// --------------------------------
+
+@document url(http://www.w3.org/), url-prefix(http://www.w3.org/Style/), domain(mozilla.org), regexp("https:.*")
+
+.zoom {
+	zoom: 3;
+}
+
+```
+
+
+---
+
+### No Duplicate Properties
+
+[↑ rules list](#table-of-contents)
+
+Duplicate properties are disallowed within the same block.  
+Exception `[display]`
+
+_sass-lint rule - [`no-duplicate-properties`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/no-duplicate-properties.md)_
+
+```scss
+// ✓ ok
+// --------------------------------
+
+%margins {
+	margin: 0 0 15px;
+}
+
+@mixin margins() {
+	margin: 0 0 15px;
+}
+
+.foo {
+	@extend %margins;
+	@include margins();
+
+	margin: 0;
+}
+
+// ✗ avoid
+// --------------------------------
+
+.foo {
+	margin: 0 0 15px;
+	margin: 0;
+}
+
+$m1: 0 0 10px;
+$m2: 20px 0;
+
+.bar {
+	margin: $m1;
+	position: relative;
+	margin: $m2;
+}
+
+// ✓ ok, when `display` is added to the exclude array
+// --------------------------------
+
+.display-block {
+	display: flex;
+	display: inline-block;
+	float: right;
+}
+
+// ✗ avoid, would still be disallowed as the duplicate properties are separated by another property
+// --------------------------------
+
+.display-block {
+	display: flex;
+	float: right;
+	display: inline-block;
+}
+
+```
+
+
+---
+
+### No Empty Rulesets
+
+[↑ rules list](#table-of-contents)
+
+Empty rulesets are disallowed.
+
+_sass-lint rule - [`no-empty-rulesets`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/no-empty-rulesets.md)_
+
+```scss
+// ✓ ok
+// --------------------------------
+
+.foo {
+	// not empty
+}
+
+.bar {
+	content: 'baz';
+
+	.qux {
+		// position: relative
+	}
+}
+
+// ✗ avoid
+// --------------------------------
+
+.foo {
+
+}
+
+.bar {
+  content: 'baz';
+
+  .qux {}
+}
+
+.waldo {}
+
+```
+
+
+---
+
+### No Extends
+
+[↑ rules list](#table-of-contents)
+
+All extends are allowed to be used. Except IDs, see [No IDs](#no-ids).
+
+_sass-lint rule - [`no-extends`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/no-extends.md)_
+
+```scss
+// ✓ ok
+// --------------------------------
+
+.foo {
+	@extend %bar;
+	@extend .bar;
+}
+
+// ✗ avoid
+// --------------------------------
+
+.foo {
+	@extend #bar;
+}
+
+```
+
+
+---
+
+### No IDs
+
+[↑ rules list](#table-of-contents)
+
+ID selectors are not allowed to be used
+
+_sass-lint rule - [`no-ids`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/no-ids.md)_
+
+```scss
+// ✗ avoid
+// --------------------------------
+
+#foo {
+	content: 'bar';
+}
+
+```
+
+
+---
+
+### No Warn
+
+[↑ rules list](#table-of-contents)
+
+`@warn` statements are disallowed to be used.
+
+_sass-lint rule - [`no-warn`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/no-warn.md)_
+
+```scss
+// ✗ avoid
+// --------------------------------
+
+@warn 'foo';
+
+```

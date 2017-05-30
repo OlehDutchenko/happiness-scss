@@ -1,0 +1,20 @@
+%margins {
+	margin: 0 0 15px;
+}
+
+@mixin margins() {
+	margin: 0 0 15px;
+}
+
+.foo {
+	@extend %margins;
+	@include margins();
+
+	margin: 0;
+}
+
+.display-block {
+	display: flex;
+	display: inline-block;
+	float: right;
+}
