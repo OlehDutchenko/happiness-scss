@@ -7,4 +7,11 @@
 
 ---
 
-This project working in progress. So there no stable notable changes yet.
+### [0.0.3] - 2017-05-30
+
+#### Added
+- full rules list
+- npm tests
+- [Travis CI](https://travis-ci.org/dutchenkoOleg/gulp-not-supported-file) builds
+
+---

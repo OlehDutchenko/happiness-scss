@@ -17,7 +17,7 @@ are welcome:
 - **Copy editing**: fix typos, clarify language, and improve the quality of the docs.
 - **Formatting**: help keep docs easy to read with consistent formatting.
 
-## Javascript Code Style
+## Javascript and Sass Code Style
 
 [![happiness][happiness-image]][happiness-url]
 [![scss happiness style](https://cdn.rawgit.com/dutchenkoOleg/happiness-scss/master/badge.svg)](https://github.com/dutchenkoOleg/happiness-scss)
