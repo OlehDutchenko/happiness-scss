@@ -8,10 +8,8 @@
 > ___One Style You Might Like___  
 > ___It is Coming Soon ;)___
 
-> ___Happiness works based on [Sass Lint](https://www.npmjs.com/package/sass-lint)___
-
 [![js happiness style](https://cdn.rawgit.com/JedWatson/happiness/master/badge.svg)](https://github.com/JedWatson/happiness)
-[![scss happiness style](https://cdn.rawgit.com/dutchenkoOleg/happiness-scss/master/badge.svg)](https://github.com/dutchenkoOleg/happiness-scss)
+[![Happiness SCSS Style](https://cdn.rawgit.com/dutchenkoOleg/happiness-scss/master/badge.svg)](https://github.com/dutchenkoOleg/happiness-scss)
 
 
 > It is called _happiness_, because we hope that it brings you joy, love and ends strife among your fellow developers.  
@@ -26,7 +24,7 @@ _It's has filename extension-based syntax detection._
 
 ---
 
-## CLI usage and install
+## CLI install and usage
 
 The easiest way to use Happiness SCSS Style to check your code is to install it globally as a Node command line program. To do so, simply run the following command in your terminal (flag -g installs `happiness-scss` globally on your system, omit it if you want to install in the current working directory):
 
@@ -107,23 +105,6 @@ Outputs the version number of Happiness SCSS
 
 ---
 
-## Why should I use Happiness SCSS Style?
-
-> If you do not want to, do not use it. And be happy without it ;)
-
-In defense of happiness it is better to quote part of the description from the [standardjs.com](https://standardjs.com/index.html#why-should-i-use-javascript-standard-style)
-
-> The beauty of ~~JavaScript Standard~~ Happiness SCSS is that it's simple. No one wants to maintain multiple hundred-line style configuration files for every module/project they work on. Enough of this madness!
-
-\- no `.sass-lint.yml` and other config files  
-\- no sasslint configs in `package.json`  
-\- no `.sassignore.rc` files  
-\- forget about tone of configs
-
-Only rock-n-roll and _happiness-scss_
-
----
-
 ### Node.js API
 
 _wip_
@@ -140,6 +121,23 @@ No. The whole point of `happiness-scss` is to save you time by avoiding [bikeshe
 
 > **Pro tip:** Just use `happiness-scss` and move on.    
 > There are actual real problems that you could spend your time solving! ;)
+
+---
+
+## Why should I use Happiness SCSS Style?
+
+> If you do not want to, do not use it. And be happy without it ;)
+
+In defense of happiness it is better to quote part of the description from the [standardjs.com](https://standardjs.com/index.html#why-should-i-use-javascript-standard-style)
+
+> The beauty of ~~JavaScript Standard~~ Happiness SCSS is that it's simple. No one wants to maintain multiple hundred-line style configuration files for every module/project they work on. Enough of this madness!
+
+\- no `.sass-lint.yml` and other config files  
+\- no sasslint configs in `package.json`  
+\- no `.sassignore.rc` files  
+\- forget about tone of configs
+
+Only rock-n-roll and _happiness-scss_
 
 ---
 
@@ -217,6 +215,28 @@ a {
   border: none; // Failing result reported
 }
 ```
+
+---
+
+## Is there a readme badge?
+
+Yes! If you use `happiness-scss` in your project, you can include one of these badges in your readme to let people know that your code is using the `happiness-scss` style.
+
+[![Happiness SCSS Style](https://cdn.rawgit.com/dutchenkoOleg/happiness-scss/master/badge.svg)](https://github.com/dutchenkoOleg/happiness-scss)
+
+```markdown
+[![Happiness SCSS Style](https://cdn.rawgit.com/dutchenkoOleg/happiness-scss/master/badge.svg)](https://github.com/dutchenkoOleg/happiness-scss)
+```
+
+[![Happiness SCSS Style](https://img.shields.io/badge/code_style-happiness--scss-blue.svg)](https://github.com/dutchenkoOleg/happiness-scss)
+
+```markdown
+[![Happiness SCSS Style](https://img.shields.io/badge/code_style-happiness--scss-blue.svg)](https://github.com/dutchenkoOleg/happiness-scss)
+```
+
+### Is there an automatic formatter?
+
+Sorry, there no automatic formatter.
 
 ---
 
