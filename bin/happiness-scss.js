@@ -28,10 +28,11 @@
  */
 
 var program = require('commander'),
+	path = require('path'),
 	meta = require('../package.json'),
 	lint = require('sass-lint'); // change path to linter
 
-var configPath = './.sass-lint.yml',
+var configPath = path.join(__dirname, '../.sass-lint.yml'),
 	config,
 	configOptions = {},
 	exitCode = 0;
@@ -61,7 +62,7 @@ var detectPattern = function (pattern, userConfig) {
 program
 	.version(meta.version)
 	.usage('[options] <pattern>')
-	// .option('-c, --config [path]', 'path to custom config file. Note! Your config will be overwritten by happiness config') // added note
+	// .option('-c, --config [path]', 'path to custom config file. Note! Your config will be overwritten by happiness config') // disable user config
 	.option('-i, --ignore [pattern]', 'pattern to ignore. For multiple ignores, separate each pattern by `, ` within a string')
 	.option('-q, --no-exit', 'do not exit on errors')
 	.option('-v, --verbose', 'verbose output')

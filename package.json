@@ -1,6 +1,6 @@
 {
   "name": "happiness-scss",
-  "version": "0.0.5",
+  "version": "0.0.7",
   "description": "SCSS happiness linter based on sass-lint",
   "main": "index.js",
   "bin": {
@@ -20,9 +20,7 @@
   },
   "homepage": "https://github.com/dutchenkoOleg/happiness-scss#readme",
   "dependencies": {
-    "lodash.merge": "^4.6.0",
-	"sass-lint": "^1.10.2",
-	"yamljs": "^0.2.10"
+	"sass-lint": "^1.10.2"
   },
   "devDependencies": {
     "happiness": "^7.1.2",
