@@ -20,6 +20,7 @@
 1. [Force Element Nesting](#force-element-nesting)
 1. [Force Pseudo Nesting](#force-pseudo-nesting)
 1. [Function Name Format](#function-name-format)
+1. [Hex Length](#hex-length)
 1. [lorem](#lorem)
 
 ---
@@ -651,5 +652,59 @@ _sass-lint rule - [`function-name-format`](https://github.com/sasstools/sass-lin
 ```
 
 ---
+
+### Hex Length
+
+[↑ rules list](#table-of-contents)
+
+Use `short` length of hexadecimal values
+
+_sass-lint rule - [`function-name-format`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/function-name-format.md)_
+
+
+```scss
+// ✓ ok
+// --------------------------------
+
+$fooColor: #456;
+$barColor: #ddd;
+$bazColor: #fff;
+
+.bar {
+	background: linear-gradient(top, $fooColor, $barColor);
+}
+
+.baz {
+	color: $bazColor;
+}
+
+// ✗ avoid
+// --------------------------------
+
+$fooColor: #445566;
+$barColor: #dddddd;
+$bazColor: #ffffff;
+
+.bar {
+	background: linear-gradient(top, $fooColor, $barColor);
+}
+
+.baz {
+	color: $bazColor;
+}
+
+// ✓ the values cannot be shortened
+// --------------------------------
+
+$quzColor: #abcdef;
+
+.qux {
+	color: $quzColor;
+}
+
+```
+
+---
+
 
 
