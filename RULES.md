@@ -53,6 +53,15 @@
 1. [No URL Protocols](#no-url-protocols)
 1. [No Vendor Prefixes](#no-vendor-prefixes)
 1. [No Warn](#no-warn)
+1. [One Declaration Per Line](#one-declaration-per-line)
+1. [Placeholder in Extend](#placeholder-in-extend)
+1. [Placeholder Name Format](#placeholder-name-format)
+1. [Property Sort Order](#property-sort-order)
+1. [Property Units](#property-units)
+1. [Pseudo-element](#pseudo-element)
+1. [Quotes](#quotes)
+1. [Shorthand Values](#shorthand-values)
+1. [Single Line Per Selector](#single-line-per-selector)
 1. [lorem](#lorem)
 
 ---
@@ -1672,15 +1681,15 @@ _sass-lint rule - [`no-trailing-whitespace`](https://github.com/sasstools/sass-l
 // --------------------------------
 
 .foo {\s
-  margin: 1.5rem;
+	margin: 1.5rem;
 }
 
 .foo {
-  margin: .5rem;\s
+	margin: .5rem;\s
 }
 
 .foo {
-  margin: .4rem;
+	margin: .4rem;
 }\s
 
 ```
@@ -1763,15 +1772,16 @@ _sass-lint rule - [`no-universal-selectors`](https://github.com/sasstools/sass-l
 // --------------------------------
 
 body {
-	// sass-lint:disable no-universal-selectors
-	* {
-		&:before,
-		&:after {
-			box-sizing: border-box;
-		}
-	}
-	// sass-lint:enable no-universal-selectors
+	box-sizing: border-box;
 }
+
+// sass-lint:disable no-universal-selectors
+*,
+::before,
+::after {
+	box-sizing: inherit;
+}
+// sass-lint:enable no-universal-selectors
 
 // ✗ avoid
 // --------------------------------
@@ -1910,8 +1920,8 @@ input {
 
 input {
 	&[type='number'] {
-		::-webkit-inner-spin-button,
-		::-webkit-outer-spin-button {
+		&::-webkit-inner-spin-button,
+		&::-webkit-outer-spin-button {
 			height: auto;
 		}
 	}
@@ -1934,5 +1944,379 @@ _sass-lint rule - [`no-warn`](https://github.com/sasstools/sass-lint/blob/master
 // --------------------------------
 
 @warn 'foo';
+
+```
+
+---
+
+### One Declaration Per Line
+
+[↑ rules list](#table-of-contents)
+
+New declarations must begin on new lines.
+
+_sass-lint rule - [`one-declaration-per-line`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/one-declaration-per-line.md)_
+
+```scss
+// ✓ ok
+// --------------------------------
+
+.foo {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+// ✗ avoid
+// --------------------------------
+
+.foo {
+	position: absolute; top: 0; left: 0;
+}
+
+```
+
+---
+
+### Placeholder in Extend
+
+[↑ rules list](#table-of-contents)
+
+All extends are allowed to be used. Except IDs, see [No IDs](#no-ids).
+
+_sass-lint rule - [`placeholder-in-extend`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/placeholder-in-extend.md)_
+
+```scss
+// ✓ ok
+// --------------------------------
+
+.foo {
+	@extend %bar;
+	@extend .bar;
+}
+
+// ✗ avoid
+// --------------------------------
+
+.foo {
+	@extend #bar;
+}
+
+```
+
+---
+
+### Placeholder Name Format
+
+[↑ rules list](#table-of-contents)
+
+`@warn` statements are disallowed to be used.
+
+_sass-lint rule - [`placeholder-name-format`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/placeholder-name-format.md)_
+
+```scss
+// ✓ ok
+// --------------------------------
+
+%hyphenated-lowercase {
+	content: '';
+}
+
+%_leading-underscore {
+	content: '';
+}
+
+.foo {
+	@extend %hyphenated-lowercase;
+}
+
+
+// ✗ avoid
+// --------------------------------
+
+%HYPHENATED-UPPERCASE {
+  content: '';
+}
+
+%_camelCaseWithLeadingUnderscore {
+  content: '';
+}
+
+.foo {
+  @extend %snake_case;
+}
+
+```
+
+---
+
+### Property Sort Order
+
+[↑ rules list](#table-of-contents)
+
+Order in which declarations are written is disabled
+
+_sass-lint rule - [`property-sort-order`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/property-sort-order.md)_
+
+---
+
+### Property Units
+
+[↑ rules list](#table-of-contents)
+
+The following CSS units are allowed:
+
+```yml
+property-units:
+  - 2
+  -
+    global:
+      - em
+      - rem
+      - px
+      - '%'
+      - s
+      - deg
+      - vw
+      - vh
+      - vmax
+      - vmin
+```
+
+
+_sass-lint rule - [`property-units`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/property-units.md)_
+
+```scss
+// ✓ ok
+// --------------------------------
+
+.block {
+	padding-top: 10%;
+	border-bottom-width: 5rem;
+	border-top-width: 20px;
+	width: 50vw;
+	height: 50vh;
+	margin: 1em 0;
+	font-size: 15vmax;
+	transform: rotate(45deg);
+	transition: color .2s ease;
+
+	&__element {
+		font-size: 5vmin;
+	}
+}
+
+// ✗ avoid
+// --------------------------------
+
+.sub-block {
+	width: 5cm;
+	padding: 10mm;
+	font-size: 2ex;
+
+	&__element {
+		font-size: 2pt;
+		line-height: 5pc;
+		margin: ch;
+	}
+}
+
+```
+
+---
+
+### Pseudo-element
+
+[↑ rules list](#table-of-contents)
+
+- Pseudo-**elements** must start with **double colons**.
+- Pseudo-**classes** must start with **single colon**.
+
+_sass-lint rule - [`pseudo-element`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/pseudo-element.md)_
+
+```scss
+// ✓ ok
+// --------------------------------
+
+.foo {
+	&::before {
+		content: 'bar';
+	}
+
+	&::after {
+		content: 'baz';
+	}
+
+	p {
+		&::first-letter {
+			font-size: 140%;
+			font-weight: bold;
+		}
+
+		&::first-line {
+			color: $color-warning;
+		}
+	}
+
+	&:hover {
+		content: 'bar';
+	}
+}
+
+// ✗ avoid
+// --------------------------------
+
+.foo {
+	&:before {
+		content: 'bar';
+	}
+
+	&:after {
+		content: 'baz';
+	}
+
+	p {
+		&:first-letter {
+			font-size: 140%;
+			font-weight: bold;
+		}
+
+		&:first-line {
+			color: $color-warning;
+		}
+	}
+
+	&::hover {
+		content: 'bar';
+	}
+}
+
+```
+
+---
+
+### Quotes
+
+[↑ rules list](#table-of-contents)
+
+Use single quotes (`''`) style.
+
+_sass-lint rule - [`quotes`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/quotes.md)_
+
+```scss
+// ✓ ok
+// --------------------------------
+
+.foo {
+	content: 'bar';
+}
+
+span {
+	&[lang='pt'] {
+		text-decoration: underline;
+	}
+}
+
+
+// ✗ avoid
+// --------------------------------
+
+.foo {
+	content: "bar";
+}
+
+span {
+	&[lang="pt"] {
+		text-decoration: underline;
+	}
+}
+
+```
+
+---
+
+### Shorthand Values
+
+[↑ rules list](#table-of-contents)
+
+Use shorthand values
+
+_sass-lint rule - [`shorthand-values`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/shorthand-values.md)_
+
+```scss
+// ✓ ok
+// --------------------------------
+
+button {
+	margin: 1px;
+}
+
+span {
+	margin: 2px 5px;
+	padding: 2px 5px 10px;
+}
+
+// ✗ avoid
+// --------------------------------
+
+button {
+	margin: 1px 1px 1px 1px;
+}
+
+span {
+	margin: 2px 5px 2px 5px;
+	padding: 2px 5px 10px 5px;
+}
+
+```
+
+---
+
+### Single Line Per Selector
+
+[↑ rules list](#table-of-contents)
+
+Selectors should be placed on a new line.
+
+_sass-lint rule - [`single-line-per-selector`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/single-line-per-selector.md)_
+
+```scss
+// ✓ ok
+// --------------------------------
+
+.foo,
+.bar {
+	content: 'baz';
+}
+
+// ✗ avoid
+// --------------------------------
+
+.foo, .bar {
+	content: 'baz';
+}
+
+```
+
+---
+
+### LOREM
+
+[↑ rules list](#table-of-contents)
+
+`@warn` statements are disallowed to be used.
+
+_sass-lint rule - [`lorem`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/lorem.md)_
+
+```scss
+// ✓ ok
+// --------------------------------
+
+
+
+// ✗ avoid
+// --------------------------------
+
+
 
 ```

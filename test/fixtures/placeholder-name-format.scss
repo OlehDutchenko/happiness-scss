@@ -1,0 +1,11 @@
+%hyphenated-lowercase {
+	content: '';
+}
+
+%_leading-underscore {
+	content: '';
+}
+
+.foo {
+	@extend %hyphenated-lowercase;
+}

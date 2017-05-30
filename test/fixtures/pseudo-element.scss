@@ -1,0 +1,33 @@
+.foo {
+	&::before {
+		content: 'bar';
+	}
+
+	&::after {
+		content: 'baz';
+	}
+
+	p {
+		&::first-letter {
+			font-size: 140%;
+			font-weight: bold;
+		}
+
+		&::first-line {
+			color: $color-warning;
+		}
+	}
+
+	&:hover {
+		content: 'bar';
+	}
+}
+
+input {
+	&[type='number'] {
+		&::-webkit-inner-spin-button,
+		&::-webkit-outer-spin-button {
+			height: auto;
+		}
+	}
+}
