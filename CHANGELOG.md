@@ -7,7 +7,11 @@
 
 ---
 
-### [0.0.3] - 2017-05-30
+### [0.0.8] - 2017-05-31
+
+#### Added
+
+- CLI description
 
 #### Added
 - full rules list

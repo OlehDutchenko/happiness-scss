@@ -2,6 +2,8 @@
 
 :back: [README.md](./README.md)
 
+> The best way to learn about happinness-scss is to just install it and give it a try on your code
+
 ## Table of contents
 
 1. [Attribute Quotes](#attribute-quotes)
@@ -2078,19 +2080,24 @@ The following CSS units are allowed:
 
 ```yml
 property-units:
-  - 2
-  -
-    global:
-      - em
-      - rem
-      - px
-      - '%'
-      - s
-      - deg
-      - vw
-      - vh
-      - vmax
-      - vmin
+- 2
+-
+  global:
+    - em
+    - rem
+    - px
+    - '%'
+    - ms
+    - s
+    - deg
+    - grad
+    - rad
+    - turn
+    - vw
+    - vh
+    - vmax
+    - vmin
+    - dpi
 ```
 
 

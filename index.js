@@ -9,11 +9,19 @@
 // Imports
 // ----------------------------------------
 
-var sassLint = require('sass-lint');
+const Linter = require('./linter');
+const path = require('path');
+
+// ----------------------------------------
+// Private
+// ----------------------------------------
+
+const configPath = path.join(__dirname, './.sass-lint.yml');
+const happinessScss = new Linter(configPath);
 
 // ----------------------------------------
 // Exports
 // ----------------------------------------
 
-module.exports = sassLint;
+module.exports = happinessScss;
 

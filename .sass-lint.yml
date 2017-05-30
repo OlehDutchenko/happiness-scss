@@ -1,3 +1,7 @@
+options:
+  formatter: stylish
+  verbose: true
+  no-exit: true
 files:
   include:
     - './**/*.s+(a|c)ss'
@@ -42,6 +46,7 @@ rules:
       include: true
       allow-single-line-rulesets: false
   extends-before-declarations: 2
+  extends-before-mixins: 2
   final-newline:
     - 2
     -
@@ -164,12 +169,17 @@ rules:
         - rem
         - px
         - '%'
+        - ms
         - s
         - deg
+        - grad
+        - rad
+        - turn
         - vw
         - vh
         - vmax
         - vmin
+        - dpi
   pseudo-element: 2
   quotes:
     - 2
