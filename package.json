@@ -7,7 +7,7 @@
     "happiness-scss": "./bin/happiness-scss.js"
   },
   "scripts": {
-    "test": "happiness \"./*.js\" --verbose | snazzy && echo \"happiness-scss version:\" && node ./bin/happiness-scss.js -V && node ./bin/happiness-scss.js -v -q -f stylish"
+    "test": "happiness \"./*.js\" --verbose | snazzy && echo \"happiness-scss version\" && node ./bin/happiness-scss.js -V && node ./bin/happiness-scss.js -v -q -f stylish"
   },
   "repository": {
     "type": "git",

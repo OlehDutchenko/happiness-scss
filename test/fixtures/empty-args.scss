@@ -1,7 +1,7 @@
-@mixin bar {
+@mixin bar() {
 	padding: 10px;
 }
 
 .bar {
-	@include bar;
+	@include bar();
 }

@@ -1,0 +1,22 @@
+$infoColor: #00f;
+
+.foo {
+	@include bar();
+
+	color: $infoColor;
+	content: 'baz';
+
+	@include breakpoint(500px) {
+		content: 'qux';
+	}
+
+	@include mq(500px) {
+		content: 'qux';
+	}
+
+	@include media(500px) {
+		content: 'qux';
+	}
+
+	@include clearfix();
+}

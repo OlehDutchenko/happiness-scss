@@ -35,7 +35,7 @@ rules:
   empty-args:
     - 2
     -
-      include: false
+      include: true
   empty-line-between-blocks:
     - 2
     -
@@ -53,18 +53,52 @@ rules:
     - 2
     -
       convention: camelcase
+      allow-leading-underscore: true
   hex-length:
     - 2
     -
       style: short
+  hex-notation:
+    - 2
+    -
+      style: lowercase
+  id-name-format: 0
   indentation:
     - 2
     -
       size: tab
+  leading-zero:
+    - 2
+    -
+      include: false
+  max-file-line-count:
+    - 2
+    -
+      length: 500
+  max-line-length:
+    - 2
+    -
+      length: 120
+  mixin-name-format:
+    - 2
+    -
+      convention: camelcase
+      allow-leading-underscore: true
+  mixins-before-declarations:
+    - 2
+    -
+      exclude:
+        - breakpoint
+        - mq
+        - media
+        - clearfix
   nesting-depth:
     - 2
     -
       max-depth: 5
+  no-attribute-selectors: 0
+  no-color-hex: 0
+  no-color-keywords: 2
   no-ids: 2
   no-qualifying-elements:
     - 2

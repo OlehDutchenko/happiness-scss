@@ -21,7 +21,19 @@
 1. [Force Pseudo Nesting](#force-pseudo-nesting)
 1. [Function Name Format](#function-name-format)
 1. [Hex Length](#hex-length)
+1. [Hex Notation](#hex-notation)
+1. [ID Name Format](#id-name-format)
+1. [Indentation](#indentation)
+1. [Leading Zero](#leading-zero)
+1. [Max File Line Count](#max-file-line-count)
+1. [Max Line Length](#max-line-length)
+1. [Mixin Name Format](#mixin-name-format)
+1. [Nesting Depth](#nesting-depth)
+1. [No Attribute Selectors](#no-attribute-selectors)
+1. [No Color Hex](#no-color-hex)
+1. [No Color Keyword](#no-color-keywords)
 1. [lorem](#lorem)
+1. [No IDs](#no-ids)
 
 ---
 
@@ -300,24 +312,13 @@ _sass-lint rule - [`declarations-before-nesting`](https://github.com/sasstools/s
 
 [↑ rules list](#table-of-contents)
 
-Not parentheses should be included if no arguments are defined or used, when declaring or invoking a mixin
+Parentheses should be included even if no arguments are defined or used, when declaring or invoking a mixin
 
 _sass-lint rule - [`empty-args`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/empty-args.md)_
 
 
 ```scss
 // ✓ ok
-// --------------------------------
-
-@mixin bar {
-	padding: 10px;
-}
-
-.bar {
-	@include bar;
-}
-
-// ✗ avoid
 // --------------------------------
 
 @mixin foo() {
@@ -327,6 +328,19 @@ _sass-lint rule - [`empty-args`](https://github.com/sasstools/sass-lint/blob/mas
 .foo {
 	@include foo();
 }
+
+// ✗ avoid
+// --------------------------------
+
+
+@mixin bar {
+	padding: 10px;
+}
+
+.bar {
+	@include bar;
+}
+
 ```
 
 ---
@@ -612,7 +626,7 @@ p:nth-of-type(2) {
 [↑ rules list](#table-of-contents)
 
 Use `camelCase` convention for function names.  
-Leading underscore is allowed
+Leading underscore is allowed.
 
 _sass-lint rule - [`function-name-format`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/function-name-format.md)_
 
@@ -657,9 +671,9 @@ _sass-lint rule - [`function-name-format`](https://github.com/sasstools/sass-lin
 
 [↑ rules list](#table-of-contents)
 
-Use `short` length of hexadecimal values
+Use `short` length of hexadecimal values if it can be shortened.
 
-_sass-lint rule - [`function-name-format`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/function-name-format.md)_
+_sass-lint rule - [`hex-length`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/hex-length.md)_
 
 
 ```scss
@@ -705,6 +719,342 @@ $quzColor: #abcdef;
 ```
 
 ---
+
+### Hex Notation
+
+[↑ rules list](#table-of-contents)
+
+Use `lowercase` style for hexadecimal values.
+
+_sass-lint rule - [`hex-notation`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/hex-notation.md)_
+
+
+```scss
+// ✓ ok
+// --------------------------------
+
+$fooColor: #4a5a6b;
+$barColor: #ddd;
+$bazColor: #abcdef;
+
+.bar {
+	background: linear-gradient(top, $fooColor, $barColor);
+}
+
+.baz {
+	color: $bazColor;
+}
+
+// ✗ avoid
+// --------------------------------
+
+$fooColor: #4A5A6B;
+$barColor: #DDD;
+$bazColor: #ABCDEF;
+
+.bar {
+	background: linear-gradient(top, $fooColor, $barColor);
+}
+
+.baz {
+	color: $bazColor;
+}
+```
+
+---
+
+### ID Name Format
+
+[↑ rules list](#table-of-contents)
+
+Rule is disabled in accordance with the ban on the use of identifiers. See [No IDs](#no-ids).
+
+_sass-lint rule - [`id-name-format`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/id-name-format.md)_
+
+---
+
+### Indentation
+
+[↑ rules list](#table-of-contents)
+
+Use `tab` for indentation, with size `4`.
+
+_sass-lint rule - [`indentation`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/indentation.md)_
+
+
+```scss
+// ✓ ok
+// --------------------------------
+
+html {
+	// position
+	position: relative;
+}
+
+// ✗ avoid
+// --------------------------------
+
+html {
+  // position
+  position: relative;
+}
+```
+
+---
+
+### Leading Zero
+
+[↑ rules list](#table-of-contents)
+
+Use `tab` for indentation, with size `4`.
+
+_sass-lint rule - [`leading-zero`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/leading-zero.md)_
+
+
+```scss
+// ✓ ok
+// --------------------------------
+
+.foo {
+	font-size: .5em;
+}
+
+// ✗ avoid
+// --------------------------------
+
+.foo {
+	font-size: 0.5em;
+}
+
+```
+
+---
+
+### Max File Line Count
+
+[↑ rules list](#table-of-contents)
+
+File's length doesn't exceed a `500` number of lines.
+
+_sass-lint rule - [`max-file-line-count`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/max-file-line-count.md)_
+
+---
+
+### Max Line Length
+
+[↑ rules list](#table-of-contents)
+
+Lines do not exceed a max length in `120` characters.
+
+_sass-lint rule - [`max-line-length`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/max-line-length.md)_
+
+
+---
+
+### Mixin Name Format
+
+[↑ rules list](#table-of-contents)
+
+Use `camelCase` convention for function names.  
+Leading underscore is allowed.
+
+_sass-lint rule - [`mixin-name-format`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/mixin-name-format.md)_
+
+```scss
+// ✓ ok
+// --------------------------------
+
+@mixin camelCase() {
+	content: '';
+}
+
+.foo {
+	@include anotherCamelCase();
+}
+
+@mixin _privateHelper() {
+	content: '';
+}
+
+// ✗ avoid
+// --------------------------------
+
+@mixin HYPHENATED-UPPERCASE() {
+	content: '';
+}
+
+@mixin _camelCaseWithLeadingUnderscore() {
+	content: '';
+}
+
+.foo {
+	@include snake_case();
+}
+```
+
+---
+
+### Mixins Before Declarations
+
+[↑ rules list](#table-of-contents)
+
+Mixins should be written before declarations in a ruleset.  
+Exception `[breakpoint, mq, media, clearfix]`
+
+_sass-lint rule - [`mixins-before-declarations`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/mixins-before-declarations.md)_
+
+```scss
+// ✓ ok
+// --------------------------------
+
+.foo {
+	@include bar();
+
+	content: 'foo';
+	text-transform: uppercase;
+	color: $fooColor;
+	border-color: inherit;
+
+	@include breakpoint(500px) {
+		content: 'qux';
+	}
+
+	@include mq(500px) {
+		content: 'qux';
+	}
+
+	@include media($lg) {
+		content: 'qux';
+	}
+
+	@include clearfix();
+}
+
+// ✗ avoid
+// --------------------------------
+
+.bar {
+	content: 'baz';
+
+	@include baz();
+}
+```
+
+---
+
+### Nesting Depth
+
+[↑ rules list](#table-of-contents)
+
+Max nesting depth is `5`. 
+
+_sass-lint rule - [`nesting-depth`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/nesting-depth.md)_
+
+```scss
+// ✓ ok
+// --------------------------------
+
+.parent {
+	&__child {
+		&--is-acitve {
+			.no-touchevents & {
+				p {
+					&::first-line {
+						// max-depth is 5
+						font-weight: bold;
+					}
+				}
+			}
+		}
+	}
+}
+
+
+// ✗ avoid
+// --------------------------------
+
+.parent {
+	&__child {
+		&--is-acitve {
+			.no-touchevents & {
+				p {
+					&:hover {
+						&::first-line {
+							// 6 and more not allowed
+							font-weight: bold;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+```
+
+---
+
+### No Attribute Selectors
+
+[↑ rules list](#table-of-contents)
+
+Attribute selectors are allowed.
+
+_sass-lint rule - [`no-attribute-selectors`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/no-attribute-selectors.md)_
+
+
+---
+
+### No Color Hex
+
+[↑ rules list](#table-of-contents)
+
+Hexadecimal colors are allowed.
+
+_sass-lint rule - [`no-color-hex`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/no-color-hex.md)_
+
+
+---
+
+### No Color Hex
+
+[↑ rules list](#table-of-contents)
+
+Hexadecimal colors are allowed.
+
+_sass-lint rule - [`no-color-hex`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/no-color-hex.md)_
+
+
+---
+
+### No Color Keyword
+
+[↑ rules list](#table-of-contents)
+
+Max nesting depth is `5`. 
+
+_sass-lint rule - [`no-color-keywords`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/no-color-keywords.md)_
+
+```scss
+// ✓ ok
+// --------------------------------
+
+$newRed: #f00;
+
+.foo {
+	color: $newRed;
+}
+
+
+// ✗ avoid
+// --------------------------------
+
+$newRed: red;
+
+.foo {
+	color: $newRed;
+}
+```
+
 
 
 

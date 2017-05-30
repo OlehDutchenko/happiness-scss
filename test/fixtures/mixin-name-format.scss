@@ -1,0 +1,11 @@
+@mixin camelCase() {
+	content: '';
+}
+
+.foo {
+	@include anotherCamelCase();
+}
+
+@mixin _privateHelper() {
+	content: '';
+}

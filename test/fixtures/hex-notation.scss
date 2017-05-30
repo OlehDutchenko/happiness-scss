@@ -1,0 +1,11 @@
+$fooColor: #4a5a6b;
+$barColor: #ddd;
+$bazColor: #abcdef;
+
+.bar {
+	background: linear-gradient(top, $fooColor, $barColor);
+}
+
+.baz {
+	color: $bazColor;
+}
