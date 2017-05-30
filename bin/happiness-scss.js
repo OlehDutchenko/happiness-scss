@@ -31,7 +31,7 @@ var program = require('commander'),
 	meta = require('../package.json'),
 	lint = require('sass-lint'); // change path to linter
 
-var configPath,
+var configPath = './.sass-lint.yml',
 	config,
 	configOptions = {},
 	exitCode = 0;
@@ -45,7 +45,7 @@ var tooManyWarnings = function (detects, userConfig) {
 var detectPattern = function (pattern, userConfig) {
 	var detects = lint.lintFiles(pattern, configOptions, configPath);
 
-	if (program.verbose) {
+	if (program.verbose || userConfig.options.verbose) {
 		lint.outputResults(detects, configOptions, configPath);
 	}
 
@@ -53,7 +53,7 @@ var detectPattern = function (pattern, userConfig) {
 		exitCode = 1;
 	}
 
-	if (program.exit) {
+	if (program.exit && userConfig.options['no-exit'] !== true) {
 		lint.failOnError(detects, configOptions, configPath);
 	}
 };
@@ -61,7 +61,7 @@ var detectPattern = function (pattern, userConfig) {
 program
 	.version(meta.version)
 	.usage('[options] <pattern>')
-	.option('-c, --config [path]', 'path to custom config file. Note! Your config will be overwritten by happiness config') // added note
+	// .option('-c, --config [path]', 'path to custom config file. Note! Your config will be overwritten by happiness config') // added note
 	.option('-i, --ignore [pattern]', 'pattern to ignore. For multiple ignores, separate each pattern by `, ` within a string')
 	.option('-q, --no-exit', 'do not exit on errors')
 	.option('-v, --verbose', 'verbose output')
@@ -74,9 +74,9 @@ program
 configOptions.files = configOptions.files || {};
 configOptions.options = configOptions.options || {};
 
-if (program.config && program.config !== true) {
-	configPath = program.config;
-}
+// if (program.config && program.config !== true) {
+// 	configPath = program.config;
+// }
 
 if (program.ignore && program.ignore !== true) {
 	configOptions.files.ignore = program.ignore.split(', ');

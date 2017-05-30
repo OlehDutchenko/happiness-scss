@@ -1,3 +1,8 @@
+options:
+  formatter: stylish
+  max-warnings: 50
+  verbose: true
+  no-exit: true
 files:
   include:
     - './**/*.s+(a|c)ss'
@@ -42,6 +47,7 @@ rules:
       include: true
       allow-single-line-rulesets: false
   extends-before-declarations: 2
+  extends-before-mixins: 2
   final-newline:
     - 2
     -
