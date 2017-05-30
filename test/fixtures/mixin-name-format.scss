@@ -1,11 +1,11 @@
-@mixin camelCase() {
+@mixin hyphenated-lowercase() {
+	content: '';
+}
+
+@mixin _leading-underscore() {
 	content: '';
 }
 
 .foo {
-	@include anotherCamelCase();
-}
-
-@mixin _privateHelper() {
-	content: '';
+	@include hyphenated-lowercase();
 }

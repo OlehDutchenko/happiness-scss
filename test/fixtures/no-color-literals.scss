@@ -1,0 +1,50 @@
+$color-white: #fff;
+
+.background {
+	background: 1px solid $color-white;
+}
+
+.hex {
+	color: $color-white;
+}
+
+// rgb function passed directly as function argument
+.adj {
+	color: adjust-color(rgb(255, 0, 0), $blue: 5);
+}
+
+// hsl function passed directly as function argument
+.scale {
+	color: scale-color(hsl(120, 70%, 80%), $lightness: 50%);
+}
+
+// hsl function passed directly as function argument
+.change {
+	color: change-color(hsl(25, 100%, 80%), $lightness: 40%, $alpha: .8);
+}
+
+// color literal passed directly as function argument
+.function {
+	color: test($color-white);
+}
+
+// color functions used directly as property values
+.rgb {
+	color: rgb(255, 255, 255);
+	background-color: rgb($color-white);
+}
+
+.rgba {
+	color: rgba(255, 255, 255, .3);
+	background-color: rgb($color-white, .5);
+}
+
+.hsl {
+	color: hsl(40, 50%, 50%);
+	background-color: hsl($color-white);
+}
+
+.hsla {
+	color: hsla(40, 50%, 50%, .3);
+	background-color: hsla($color-white, .5);
+}

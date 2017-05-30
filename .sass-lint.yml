@@ -52,7 +52,7 @@ rules:
   function-name-format:
     - 2
     -
-      convention: camelcase
+      convention: hyphenatedlowercase
       allow-leading-underscore: true
   hex-length:
     - 2
@@ -82,7 +82,7 @@ rules:
   mixin-name-format:
     - 2
     -
-      convention: camelcase
+      convention: hyphenatedlowercase
       allow-leading-underscore: true
   mixins-before-declarations:
     - 2
@@ -99,6 +99,12 @@ rules:
   no-attribute-selectors: 0
   no-color-hex: 0
   no-color-keywords: 2
+  no-color-literals:
+    - 0
+    -
+      allow-map-identifiers: true
+      allow-rgba: true
+      allow-variable-identifiers: true
   no-ids: 2
   no-qualifying-elements:
     - 2
@@ -111,4 +117,4 @@ rules:
   variable-name-format:
     - 2
     -
-      convention: camelcase
+      convention: hyphenatedlowercase

@@ -1,9 +1,9 @@
-$infoColor: #00f;
+$info-color: #00f;
 
 .foo {
 	@include bar();
 
-	color: $infoColor;
+	color: $info-color;
 	content: 'baz';
 
 	@include breakpoint(500px) {

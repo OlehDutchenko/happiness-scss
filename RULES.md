@@ -32,6 +32,7 @@
 1. [No Attribute Selectors](#no-attribute-selectors)
 1. [No Color Hex](#no-color-hex)
 1. [No Color Keyword](#no-color-keywords)
+1. [No Color Literals](#no-color-literals)
 1. [lorem](#lorem)
 1. [No IDs](#no-ids)
 
@@ -625,7 +626,7 @@ p:nth-of-type(2) {
 
 [↑ rules list](#table-of-contents)
 
-Use `camelCase` convention for function names.  
+Use `hyphenatedlowercase` convention for function names.  
 Leading underscore is allowed.
 
 _sass-lint rule - [`function-name-format`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/function-name-format.md)_
@@ -635,16 +636,16 @@ _sass-lint rule - [`function-name-format`](https://github.com/sasstools/sass-lin
 // ✓ ok
 // --------------------------------
 
-@function camelCase() {
+@function hyphenated-lowercase() {
 	@return 'foo';
 }
 
-@function _leadingUnderscore($x) {
+@function _leading-underscore($x) {
 	@return $x;
 }
 
 .foo {
-	content: camelCase('bar');
+	content: hyphenated-lowercase('bar');
 }
 
 
@@ -655,12 +656,12 @@ _sass-lint rule - [`function-name-format`](https://github.com/sasstools/sass-lin
 	@return 'foo';
 }
 
-.foo {
-	content: snake_case();
+@function _camelCaseWithLeadingUnderscore($x) {
+	@return $x;
 }
 
-@function hyphenated-lowercase() {
-	@return 'foo';
+.foo {
+	content: snake_case();
 }
 
 ```
@@ -680,40 +681,40 @@ _sass-lint rule - [`hex-length`](https://github.com/sasstools/sass-lint/blob/mas
 // ✓ ok
 // --------------------------------
 
-$fooColor: #456;
-$barColor: #ddd;
-$bazColor: #fff;
+$foo-color: #456;
+$bar-color: #ddd;
+$baz-color: #fff;
 
 .bar {
-	background: linear-gradient(top, $fooColor, $barColor);
+	background: linear-gradient(top, $foo-color, $bar-color);
 }
 
 .baz {
-	color: $bazColor;
+	color: $baz-color;
 }
 
 // ✗ avoid
 // --------------------------------
 
-$fooColor: #445566;
-$barColor: #dddddd;
-$bazColor: #ffffff;
+$foo-color: #445566;
+$bar-color: #dddddd;
+$baz-color: #ffffff;
 
 .bar {
-	background: linear-gradient(top, $fooColor, $barColor);
+	background: linear-gradient(top, $foo-color, $bar-color);
 }
 
 .baz {
-	color: $bazColor;
+	color: $baz-color;
 }
 
 // ✓ the values cannot be shortened
 // --------------------------------
 
-$quzColor: #abcdef;
+$quz-color: #abcdef;
 
 .qux {
-	color: $quzColor;
+	color: $quz-color;
 }
 
 ```
@@ -733,31 +734,31 @@ _sass-lint rule - [`hex-notation`](https://github.com/sasstools/sass-lint/blob/m
 // ✓ ok
 // --------------------------------
 
-$fooColor: #4a5a6b;
-$barColor: #ddd;
-$bazColor: #abcdef;
+$foo-color: #4a5a6b;
+$bar-color: #ddd;
+$baz-color: #abcdef;
 
 .bar {
-	background: linear-gradient(top, $fooColor, $barColor);
+	background: linear-gradient(top, $foo-color, $bar-color);
 }
 
 .baz {
-	color: $bazColor;
+	color: $baz-color;
 }
 
 // ✗ avoid
 // --------------------------------
 
-$fooColor: #4A5A6B;
-$barColor: #DDD;
-$bazColor: #ABCDEF;
+$foo-color: #4A5A6B;
+$bar-color: #DDD;
+$baz-color: #ABCDEF;
 
 .bar {
-	background: linear-gradient(top, $fooColor, $barColor);
+	background: linear-gradient(top, $foo-color, $bar-color);
 }
 
 .baz {
-	color: $bazColor;
+	color: $baz-color;
 }
 ```
 
@@ -855,7 +856,7 @@ _sass-lint rule - [`max-line-length`](https://github.com/sasstools/sass-lint/blo
 
 [↑ rules list](#table-of-contents)
 
-Use `camelCase` convention for function names.  
+Use `hyphenatedlowercase` convention for mixin names.  
 Leading underscore is allowed.
 
 _sass-lint rule - [`mixin-name-format`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/mixin-name-format.md)_
@@ -864,16 +865,16 @@ _sass-lint rule - [`mixin-name-format`](https://github.com/sasstools/sass-lint/b
 // ✓ ok
 // --------------------------------
 
-@mixin camelCase() {
+@mixin hyphenated-lowercase() {
+	content: '';
+}
+
+@mixin _leading-underscore() {
 	content: '';
 }
 
 .foo {
-	@include anotherCamelCase();
-}
-
-@mixin _privateHelper() {
-	content: '';
+	@include hyphenated-lowercase();
 }
 
 // ✗ avoid
@@ -912,7 +913,7 @@ _sass-lint rule - [`mixins-before-declarations`](https://github.com/sasstools/sa
 
 	content: 'foo';
 	text-transform: uppercase;
-	color: $fooColor;
+	color: $foo-color;
 	border-color: inherit;
 
 	@include breakpoint(500px) {
@@ -1015,18 +1016,7 @@ _sass-lint rule - [`no-color-hex`](https://github.com/sasstools/sass-lint/blob/m
 
 ---
 
-### No Color Hex
-
-[↑ rules list](#table-of-contents)
-
-Hexadecimal colors are allowed.
-
-_sass-lint rule - [`no-color-hex`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/no-color-hex.md)_
-
-
----
-
-### No Color Keyword
+### No Color Keywords
 
 [↑ rules list](#table-of-contents)
 
@@ -1038,20 +1028,20 @@ _sass-lint rule - [`no-color-keywords`](https://github.com/sasstools/sass-lint/b
 // ✓ ok
 // --------------------------------
 
-$newRed: #f00;
+$new-red: #f00;
 
 .foo {
-	color: $newRed;
+	color: $new-red;
 }
 
 
 // ✗ avoid
 // --------------------------------
 
-$newRed: red;
+$new-red: red;
 
 .foo {
-	color: $newRed;
+	color: $new-red;
 }
 ```
 
