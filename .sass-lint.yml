@@ -177,6 +177,45 @@ rules:
       style: single
   shorthand-values: 2
   single-line-per-selector: 2
+  space-after-bang: 2
+  space-after-colon:
+    - 2
+    -
+      include: true
+  space-after-comma:
+    - 2
+    -
+      include: true
+  space-around-operator:
+    - 2
+    -
+      include: true
+  space-before-bang:
+    - 2
+    -
+      include: true
+  space-before-colon:
+    - 2
+    -
+      include: false
+  space-before-brace:
+    - 2
+    -
+      include: true
+  space-between-parens:
+    - 2
+    -
+      include: false
+  trailing-semicolon:
+    - 2
+    -
+      include: true
+  url-quotes: 2
+  variable-for-property: 2
+  zero-unit:
+    - 2
+    -
+      include: false
   variable-name-format:
     - 2
     -

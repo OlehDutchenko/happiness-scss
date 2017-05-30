@@ -62,11 +62,21 @@
 1. [Quotes](#quotes)
 1. [Shorthand Values](#shorthand-values)
 1. [Single Line Per Selector](#single-line-per-selector)
-1. [lorem](#lorem)
+1. [Space After Bang](#space-after-bang)
+1. [Space After Colon](#space-after-colon)
+1. [Space After Comma](#space-after-comma)
+1. [Space Around Operator](#space-around-operator)
+1. [Space Before Bang](#space-before-bang)
+1. [Space Before Brace](#space-before-brace)
+1. [Space Before Colon](#space-before-colon)
+1. [Space Between Parens](#space-between-parens)
+1. [Trailing Semicolon](#trailing-semicolon)
+1. [URL Quotes](#url-quotes)
+1. [Variable For Property](#variable-for-property)
+1. [Variable Name Format](#variable-name-format)
+1. [Zero Unit](#zero-unit)
 
 ---
-
-This project working in progress. So there no stable notable changes yet.
 
 ### Attribute Quotes
 
@@ -2300,11 +2310,204 @@ _sass-lint rule - [`single-line-per-selector`](https://github.com/sasstools/sass
 
 ---
 
-### LOREM
+### Space After Bang
 
 [↑ rules list](#table-of-contents)
 
-`@warn` statements are disallowed to be used.
+Bangs (`!`) should not be followed by a space
+
+_sass-lint rule - [`space-after-bang`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/space-after-bang.md)_
+
+```scss
+// ✓ ok
+// --------------------------------
+
+$color-white: #fff !default;
+
+.block {
+	width: 100% !important;
+}
+
+// ✗ avoid
+// --------------------------------
+
+$color-white: #fff ! default;
+
+.block {
+	width: 100% ! important;
+}
+
+```
+
+---
+
+### Space After Colon
+
+[↑ rules list](#table-of-contents)
+
+Space expected after `:`  are required.
+
+_sass-lint rule - [`space-after-colon`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/space-after-colon.md)_
+
+```scss
+// ✓ ok
+// --------------------------------
+
+.foo {
+	content: 'bar';
+}
+
+// ✗ avoid
+// --------------------------------
+
+.foo {
+	content:'bar';
+}
+
+```
+
+---
+
+### Space After Comma
+
+[↑ rules list](#table-of-contents)
+
+Commas should be followed by a space.
+
+_sass-lint rule - [`space-after-comma`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/space-after-comma.md)_
+
+```scss
+// ✓ ok
+// --------------------------------
+
+.foo {
+	@include baz('foo', 'bar');
+
+	box-shadow: 1px 1px $black, 1px 1px $black;
+}
+
+// ✗ avoid
+// --------------------------------
+
+.foo {
+	@include baz('foo','bar');
+
+	box-shadow: 1px 1px $black,1px 1px $black;
+}
+
+```
+
+---
+
+### Space Around Operator
+
+[↑ rules list](#table-of-contents)
+
+Space around operator are required
+
+_sass-lint rule - [`space-around-operator`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/space-around-operator.md)_
+
+```scss
+// ✓ ok
+// --------------------------------
+
+.foo {
+	margin: 5px + 15px;
+}
+
+$foo: 1;
+$bar: 3;
+
+.bar {
+	margin: $foo + $bar + 'px';
+}
+
+$foo: 1 + 1;
+$bar: 2 - 1;
+
+@if $foo == $bar {
+	$baz: 1;
+}
+
+@if ($foo != $bar) {
+	$baz: 1;
+}
+
+// ✗ avoid
+// --------------------------------
+
+.foo {
+	margin: 5px+15px;
+}
+
+$foo: 1;
+$bar: 3;
+
+.bar {
+	margin: $foo+$bar+'px';
+}
+
+$foo: 1+1;
+$bar: 2-1;
+
+@if $foo==$bar {
+	$baz: 1;
+}
+
+@if ($foo!=$bar) {
+	$baz: 1;
+}
+
+// ✗ avoid, multiple spaces not allowed around operator
+// --------------------------------
+
+.foo {
+	margin: 5px   +       15px;
+}
+
+$foo: 1      +1;
+$bar: 2-     1;
+
+```
+
+---
+
+### Space Before Bang
+
+[↑ rules list](#table-of-contents)
+
+Whitespace required before `!`
+
+_sass-lint rule - [`space-before-bang`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/space-before-bang.md)_
+
+```scss
+// ✓ ok
+// --------------------------------
+
+$color-white: #fff !default;
+
+.block {
+	width: 100% !important;
+}
+
+// ✗ avoid
+// --------------------------------
+
+$color-white: #fff!default;
+
+.block {
+	width: 100%!important;
+}
+
+```
+
+---
+
+### Space Before Brace
+
+[↑ rules list](#table-of-contents)
+
+Whitespace required before `{`
 
 _sass-lint rule - [`lorem`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/lorem.md)_
 
@@ -2312,11 +2515,264 @@ _sass-lint rule - [`lorem`](https://github.com/sasstools/sass-lint/blob/master/d
 // ✓ ok
 // --------------------------------
 
+.foo {
+	content: 'bar';
+
+	@include breakpoint() {
+		content: 'baz';
+	}
+}
+
+@mixin foo() {
+	content: 'bar';
+}
 
 
 // ✗ avoid
 // --------------------------------
 
+.foo{
+	content: 'bar';
 
+	@include breakpoint(){
+		content: 'baz';
+	}
+}
+
+@mixin foo(){
+	content: 'bar';
+}
+
+```
+
+---
+
+### Space Before Colon
+
+[↑ rules list](#table-of-contents)
+
+No space allowed before `:`
+
+_sass-lint rule - [`space-before-colon`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/space-before-colon.md)_
+
+```scss
+// ✓ ok
+// --------------------------------
+
+.foo {
+	content: 'bar';
+}
+
+// ✗ avoid
+// --------------------------------
+
+.foo {
+	content :'bar';
+}
+
+```
+
+---
+
+### Space Between Parens
+
+[↑ rules list](#table-of-contents)
+
+- No space allowed at beginning of parenthesis.
+- No space allowed at end of parenthesis.
+
+_sass-lint rule - [`space-between-parens`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/space-between-parens.md)_
+
+```scss
+// ✓ ok
+// --------------------------------
+
+@function foo($bar) {
+	@return $bar;
+}
+
+@mixin bar($baz) {
+	content: $baz;
+}
+
+.foo {
+	@include bar('Hello');
+	content: foo('bar');
+	width: calc(100% - 10px);
+}
+
+// ✗ avoid
+// --------------------------------
+
+@function foo( $bar ) {
+	@return $bar;
+}
+
+@mixin bar($baz ) {
+	content: $baz;
+}
+
+.foo {
+	@include bar( 'Hello' );
+	content: foo( 'bar');
+	width: calc( 100% - 10px);
+}
+
+```
+
+---
+
+### Trailing Semicolon
+
+[↑ rules list](#table-of-contents)
+
+`@warn` statements are disallowed to be used.
+
+_sass-lint rule - [`trailing-semicolon`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/trailing-semicolon.md)_
+
+```scss
+// ✓ ok
+// --------------------------------
+
+.foo {
+	content: 'bar';
+	color: $red;
+
+	.waldo {
+		content: 'where';
+	}
+}
+
+// ✗ avoid
+// --------------------------------
+
+.foo {
+	content: 'bar';
+	color: $red
+
+	.waldo {
+		content: 'where'
+	}
+}
+
+```
+
+---
+
+### URL Quotes
+
+[↑ rules list](#table-of-contents)
+
+`@warn` statements are disallowed to be used.
+
+_sass-lint rule - [`url-quotes`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/url-quotes.md)_
+
+```scss
+// ✓ ok
+// --------------------------------
+
+.foo {
+	background-image: url('foo.png');
+}
+
+.qux {
+	background-image: url('bar/' + $foo);
+}
+
+// ✗ avoid
+// --------------------------------
+
+.bar {
+	background-image: url(foo.png);
+}
+
+.norf {
+	background-image: url(bar/ + $foo);
+}
+
+```
+
+---
+
+### Variable For Property
+
+[↑ rules list](#table-of-contents)
+
+Rule `variable-for-property` will enforce the use of variables for the values of specified properties. There are no properties by default, except for reserved words listed below which are always whitelisted:
+
+- inherit
+- initial
+- transparent
+- none
+- currentColor
+
+_sass-lint rule - [`variable-for-property`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/variable-for-property.md)_
+
+---
+
+### Variable Name Format
+
+[↑ rules list](#table-of-contents)
+
+Use `hyphenatedlowercase` convention for variable names.  
+Leading underscore is allowed.
+
+_sass-lint rule - [`variable-name-format`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/variable-name-format.md)_
+
+```scss
+// ✓ ok
+// --------------------------------
+
+$hyphenated-lowercase: 1px;
+$_leading-underscore: 1px;
+
+.foo {
+	width: $hyphenated-lowercase;
+}
+
+// ✗ avoid
+// --------------------------------
+
+$HYPHENATED-UPPERCASE: 1px;
+$_camelCaseWithLeadingUnderscore: 1px;
+
+.foo {
+	width: $snake_case;
+}
+
+```
+
+---
+
+### Zero Unit
+
+[↑ rules list](#table-of-contents)
+
+No unit allowed for values of `0`
+
+_sass-lint rule - [`zero-unit`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/zero-unit.md)_
+
+```scss
+// ✓ ok
+// --------------------------------
+
+.foo {
+	margin: 0;
+}
+
+.bar {
+	padding: 5px 0 0;
+}
+
+// ✗ avoid
+// --------------------------------
+
+.foo {
+	margin: 0px;
+}
+
+.bar {
+	padding: 5px 0px 0px;
+}
 
 ```

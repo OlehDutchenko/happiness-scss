@@ -1,0 +1,7 @@
+.foo {
+	background-image: url('foo.png');
+}
+
+.qux {
+	background-image: url('bar/' + $foo);
+}
