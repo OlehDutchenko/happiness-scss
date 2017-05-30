@@ -121,11 +121,32 @@ rules:
         - display
   no-empty-rulesets: 2
   no-extends: 0
-  no-ids: 2
+  no-ids: 0
+  no-important: 2
+  no-invalid-hex: 2
+  no-mergeable-selectors: 2
+  no-misspelled-properties: 2
   no-qualifying-elements:
     - 2
     -
       allow-element-with-attribute: true
+      allow-element-with-class: true
+      allow-element-with-id: false
+  no-trailing-whitespace: 2
+  no-trailing-zero: 2
+  no-transition-all: 2
+  no-universal-selectors: 2
+  no-url-domains: 2
+  no-url-protocols: 0
+  no-vendor-prefixes:
+    - 2
+    -
+      additional-identifiers:
+        - khtml
+        - o
+      excluded-identifiers:
+        - webkit
+      ignore-non-standard: true
   no-warn: 2
   quotes:
     - 2

@@ -7,7 +7,6 @@
 1. [Attribute Quotes](#attribute-quotes)
 1. [BEM Depth](#bem-depth)
 1. [Border Zero](#border-zero)
-1. [Attribute](#attribute)
 1. [Brace Style](#brace-style)
 1. [Class Name Format](#class-name-format)
 1. [Clean Import Paths](#clean-import-paths)
@@ -41,8 +40,20 @@
 1. [No Empty Rulesets](#no-empty-rulesets)
 1. [No Extends](#no-extends)
 1. [No IDs](#no-ids)
-1. [lorem](#lorem)
+1. [No Important](#no-important)
+1. [No Invalid Hex](#no-invalid-hex)
+1. [No Mergeable Selectors](#no-mergeable-selectors)
+1. [No Misspelled Properties](#no-misspelled-properties)
+1. [No Qualifying Elements](#no-qualifying-elements)
+1. [No Trailing Whitespace](#no-trailing-whitespace)
+1. [No Trailing Zero](#no-trailing-zero)
+1. [No Transition All](#no-transition-all)
+1. [No Universal Selectors](#no-universal-selectors)
+1. [No Url Domains](#no-url-domains)
+1. [No URL Protocols](#no-url-protocols)
+1. [No Vendor Prefixes](#no-vendor-prefixes)
 1. [No Warn](#no-warn)
+1. [lorem](#lorem)
 
 ---
 
@@ -1037,7 +1048,7 @@ _sass-lint rule - [`no-color-hex`](https://github.com/sasstools/sass-lint/blob/m
 
 [↑ rules list](#table-of-contents)
 
-Max nesting depth is `5`. 
+Colors keywords are disallowed. 
 
 _sass-lint rule - [`no-color-keywords`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/no-color-keywords.md)_
 
@@ -1449,6 +1460,464 @@ _sass-lint rule - [`no-ids`](https://github.com/sasstools/sass-lint/blob/master/
 
 ```
 
+
+---
+
+### No Important
+
+[↑ rules list](#table-of-contents)
+
+`!important` declarations are not allowed to be used
+
+_sass-lint rule - [`no-important`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/no-important.md)_
+
+```scss
+// ✗ avoid
+// --------------------------------
+
+.foo {
+	content: 'bar' !important;
+}
+
+```
+
+
+---
+
+### No Invalid Hex
+
+[↑ rules list](#table-of-contents)
+
+Only valid of hexadecimal values are allowed.
+
+_sass-lint rule - [`no-invalid-hex`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/no-invalid-hex.md)_
+
+```scss
+// ✗ avoid
+// --------------------------------
+
+// must be 3 or 6 characters
+$invalid-long: #1234567;
+$invalid-med: #1234;
+$invalid-short: #12;
+$invalid-letters-long: #abcdefg;
+$invalid-letters-med: #abcd;
+$invalid-letters-short: #ab;
+$invalid-mixed-long: #1bcdefg;
+$invalid-mixed-med: #1bcd;
+$invalid-mixed-short: #1b;
+$invalid-mixed-letters-long: #abcdef7;
+$invalid-mixed-letters-med: #abc4;
+$invalid-mixed-letters-short: #a1;
+
+// mustn't contain invalid characters
+$invalid-character-map: (
+	invalid-characters-upper-letters: #GHIJKL,
+	invalid-characters-upper-letters-short: #GHI,
+	even-more-invalid-map: (
+		invalid-characters-lower-letters-short: #ghijkl,
+		invalid-characters-lower-letters-short: #ghi
+	)
+);
+
+```
+
+
+---
+
+### No Mergeable Selectors
+
+[↑ rules list](#table-of-contents)
+
+Selectors aren't repeated and that their properties are merged.
+
+- `whitelist` is empty
+
+_sass-lint rule - [`no-mergeable-selectors`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/no-mergeable-selectors.md)_
+
+```scss
+// ✓ ok
+// --------------------------------
+
+h1,
+h2,
+h3 {
+	text-transform: uppercase;
+}
+
+h1 {
+	font-size: 2rem;
+}
+
+// ✗ avoid
+// --------------------------------
+
+h1,
+h2,
+h3 {
+	text-transform: uppercase;
+}
+
+h1,
+h2,
+h3 {
+	font-size: 2rem;
+}
+
+.foo {
+	content: 'bar';
+}
+
+//duplicate selector
+.foo {
+	color: red;
+}
+
+// ✓ ok
+// --------------------------------
+
+.bar {
+	text-transform: capitalize;
+}
+
+.test {
+	.bar {
+		text-transform: uppercase;
+	}
+}
+
+// ✗ avoid
+// --------------------------------
+
+.test {
+	.bar {
+		text-transform: capitalize;
+	}
+}
+
+.test {
+	.bar {
+		text-transform: uppercase;
+	}
+}
+
+```
+
+
+---
+
+### No Misspelled Properties
+
+[↑ rules list](#table-of-contents)
+
+correct spelling of CSS properties and prevent the use of unknown CSS properties.
+
+_sass-lint rule - [`no-misspelled-properties`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/no-misspelled-properties.md)_
+
+```scss
+// ✗ avoid
+// --------------------------------
+
+// incorrect spelling
+.foo {
+	borders-width: 0;
+}
+
+// unknown property
+.bar {
+	border-right-left: 0;
+}
+
+// incorrect spelling
+.baz {
+	transit1on: width 2s;
+}
+
+```
+
+
+---
+
+### No Qualifying Elements
+
+[↑ rules list](#table-of-contents)
+
+Qualifying Elements are allowed. Except IDs, see [No IDs](#no-ids).
+
+_sass-lint rule - [`no-qualifying-elements`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/no-qualifying-elements.md)_
+
+```scss
+// ✗ avoid
+// --------------------------------
+
+span#id {
+	position: relative;
+}
+
+```
+
+
+---
+
+### No Trailing Whitespace
+
+[↑ rules list](#table-of-contents)
+
+Trailing whitespace is not allowed.
+
+_sass-lint rule - [`no-trailing-whitespace`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/no-trailing-whitespace.md)_
+
+```scss
+// ✗ avoid
+// --------------------------------
+
+.foo {\s
+  margin: 1.5rem;
+}
+
+.foo {
+  margin: .5rem;\s
+}
+
+.foo {
+  margin: .4rem;
+}\s
+
+```
+
+
+---
+
+### No Trailing Zero
+
+[↑ rules list](#table-of-contents)
+
+Trailing zeros is not allowed.
+
+_sass-lint rule - [`no-trailing-zero`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/no-trailing-zero.md)_
+
+```scss
+// ✗ avoid
+// --------------------------------
+
+.foo {
+	margin: 1.500rem;
+}
+
+.foo {
+	margin: .500rem;
+}
+
+.foo {
+	margin: 0.2500rem;
+}
+
+.foo {
+	margin: 4.0rem;
+}
+
+```
+
+
+---
+
+### No Transition All
+
+[↑ rules list](#table-of-contents)
+
+Keyword `all` cannot be used with the `transition` or `transition-property` property.
+
+_sass-lint rule - [`no-transition-all`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/no-transition-all.md)_
+
+```scss
+// ✗ avoid
+// --------------------------------
+
+.foo {
+	transition: all 2s;
+}
+
+.bar {
+	transition-property: all 2s;
+}
+
+.quz {
+	-webkit-transition: all 2s, height 2s, background-color 2s, -webkit-transform 2s;
+}
+
+```
+
+
+---
+
+### No Universal Selectors
+
+[↑ rules list](#table-of-contents)
+
+`*` (universal) selectors is not allowed.
+
+_sass-lint rule - [`no-universal-selectors`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/no-universal-selectors.md)_
+
+```scss
+// ✓ ok
+// --------------------------------
+
+body {
+	// sass-lint:disable no-universal-selectors
+	* {
+		&:before,
+		&:after {
+			box-sizing: border-box;
+		}
+	}
+	// sass-lint:enable no-universal-selectors
+}
+
+// ✗ avoid
+// --------------------------------
+
+* {
+  content: 'foo';
+}
+
+* [lang^=en] {
+  content: 'bar';
+}
+
+*.warning {
+  content: 'baz';
+}
+
+*#maincontent {
+  content: 'qux';
+}
+
+*:before,
+*:after {
+  content: 'norf';
+}
+
+```
+
+
+---
+
+### No Url Domains
+
+[↑ rules list](#table-of-contents)
+
+Trailing whitespace is not allowed.
+
+_sass-lint rule - [`no-url-domains`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/no-url-domains.md)_
+
+```scss
+
+// ✓ ok
+// --------------------------------
+
+.foo {
+	background-image: url('/img/bar.png');
+}
+
+.bar {
+	background-image: url('img/bar.png');
+}
+
+.baz {
+	background-image: url('bar.png');
+}
+
+// ✗ avoid
+// --------------------------------
+
+.foo {
+	background-image: url('https://foo.com/img/bar.png');
+}
+
+.bar {
+	background-image: url('http://foo.com/img/bar.png');
+}
+
+.baz {
+	background-image: url('//foo.com/img/bar.png');
+}
+
+```
+
+
+---
+
+### No URL Protocols
+
+[↑ rules list](#table-of-contents)
+
+Rule is disabled
+
+> This option is scheduled to be deprecated in favour of the [no-url-domains](https://github.com/sasstools/sass-lint/blob/develop/docs/rules/no-url-domains.md) rule in sass-lint 2.0.
+
+
+---
+
+### No Vendor Prefixes
+
+[↑ rules list](#table-of-contents)
+
+Vendor prefixes are not allowed to be used.
+
+```yml
+no-vendor-prefixes:
+  - 2
+  -
+    additional-identifiers:
+      - khtml
+      - o
+    excluded-identifiers:
+      - webkit
+    ignore-non-standard: true
+```
+
+_sass-lint rule - [`no-vendor-prefixes`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/no-vendor-prefixes.md)_
+
+```scss
+
+// ✗ avoid
+// --------------------------------
+
+.baz {
+	position: -khtml-sticky;
+	-moz-border-radius: 6px;
+	-ms-border-radius: 6px;
+	-o-border-radius: 6px;
+}
+
+// ✓ ok, excluded-identifiers
+// --------------------------------
+
+html {
+	-webkit-tap-highlight-color: $link-color-hover;
+}
+
+// ✓ ok, ignore-non-standard
+// --------------------------------
+
+button,
+input {
+	&::-moz-focus-inner {
+		border-width: 0;
+		padding: 0;
+	}
+}
+
+input {
+	&[type='number'] {
+		::-webkit-inner-spin-button,
+		::-webkit-outer-spin-button {
+			height: auto;
+		}
+	}
+}
+
+```
 
 ---
 

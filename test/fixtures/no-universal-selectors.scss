@@ -1,0 +1,10 @@
+body {
+	// sass-lint:disable no-universal-selectors
+	* {
+		&:before,
+		&:after {
+			box-sizing: border-box;
+		}
+	}
+	// sass-lint:enable no-universal-selectors
+}
