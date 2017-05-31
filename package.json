@@ -19,6 +19,16 @@
     "url": "https://github.com/dutchenkoOleg/happiness-scss/issues"
   },
   "homepage": "https://github.com/dutchenkoOleg/happiness-scss#readme",
+  "keywords": [
+    "code-style",
+    "happiness",
+    "happiness-scss",
+    "scss",
+    "sass",
+    "linter",
+    "scss-lint",
+    "sass-lint"
+  ],
   "dependencies": {
     "sass-lint": "^1.10.2"
   },
