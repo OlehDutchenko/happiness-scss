@@ -7,6 +7,11 @@
 
 ---
 
+### [1.0.1] - 2017-05-31
+
+- Clean dev logs
+- Fix correct ignoring './node_modules/**'
+
 ### [1.0.0] - 2017-05-31
 
 - Stable release

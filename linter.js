@@ -9,11 +9,20 @@
 // Imports
 // ----------------------------------------
 
+const path = require('path');
 const sassLint = require('sass-lint');
 
 // ----------------------------------------
 // Private
 // ----------------------------------------
+
+/**
+ * Return correct path to `node_modules` folder in Current Working Directory (cwd)
+ * @returns {string}
+ */
+function ignoreNodeModules () {
+	return path.join(process.cwd(), './node_modules/**');
+}
 
 /**
  * Transform user config for linter config
@@ -27,7 +36,11 @@ function transformConfig (config) {
 	}
 
 	if (!Object.keys(config).length) {
-		return {};
+		return {
+			files: {
+				ignore: [ignoreNodeModules()]
+			}
+		};
 	}
 
 	let runConfig = {};
@@ -42,7 +55,11 @@ function transformConfig (config) {
 	}
 	if (Array.isArray(config.ignore)) {
 		runConfig.files = {
-			ignore: config.ignore.concat('./node_modules/**')
+			ignore: config.ignore.concat(ignoreNodeModules())
+		};
+	} else {
+		runConfig.files = {
+			ignore: [ignoreNodeModules()]
 		};
 	}
 
@@ -59,7 +76,6 @@ function transformConfig (config) {
  */
 function lintMethod (mtd, file, config, cb, configPath) {
 	let runConfig = transformConfig(config);
-	console.log(runConfig);
 
 	if (typeof cb !== 'function') {
 		cb = function () {};
