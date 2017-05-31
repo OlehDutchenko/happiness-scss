@@ -1,6 +1,6 @@
 {
   "name": "happiness-scss",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "SCSS happiness linter based on sass-lint",
   "main": "index.js",
   "bin": {

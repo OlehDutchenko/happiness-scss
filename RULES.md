@@ -16,6 +16,7 @@
 1. [Empty Args](#empty-args)
 1. [Empty Line Between Blocks](#empty-line-between-blocks)
 1. [Extends Before Declarations](#extends-before-declarations)
+1. [Extends Before Mixins](#extends-before-mixins)
 1. [Final Newline](#final-newline)
 1. [Force Attribute Nesting](#force-attribute-nesting)
 1. [Force Element Nesting](#force-element-nesting)
@@ -483,11 +484,41 @@ _sass-lint rule - [`extends-before-declarations`](https://github.com/sasstools/s
 
 ---
 
+### Extends Before Mixins
+
+[↑ rules list](#table-of-contents)
+
+Extends should come before mixins!
+
+_sass-lint rule - [`extends-before-mixins`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/extends-before-mixins.md)_
+
+
+```scss
+// ✓ ok
+// --------------------------------
+
+.foo {
+	@extend %bar;
+	@include baz();
+}
+
+// ✗ avoid
+// --------------------------------
+
+.foo {
+	@include baz();
+	@extend %bar;
+}
+
+```
+
+---
+
 ### Final Newline
 
 [↑ rules list](#table-of-contents)
 
-Extends should be written before declarations in a ruleset!
+Files must end with a new line
 
 _sass-lint rule - [`final-newline`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/final-newline.md)_
 

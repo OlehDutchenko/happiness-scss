@@ -7,6 +7,15 @@
 
 ---
 
+### [0.0.10] - 2017-05-31
+
+#### Added
+
+- Missed `extends-before-mixins` rule
+- Fix typo
+
+---
+
 ### [0.0.9] - 2017-05-31
 
 #### Added

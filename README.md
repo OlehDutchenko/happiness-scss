@@ -18,7 +18,7 @@
 >   
 > _© [happiness](https://github.com/JedWatson/happiness)_
 
-Do not worry about what it's called SCSS  
+Don't worry about that it's called SCSS  
 Since this works on [Sass Lint](https://www.npmjs.com/package/sass-lint), it will also work well with your `*.sass` files ;)  
 _It's has filename extension-based syntax detection._
 
@@ -34,7 +34,8 @@ npm i -g happiness-scss
 yarn global add happiness-scss
 ```
 
-After you've done that you should be able to use the `happiness-scss` program. The simplest use case would be checking the style of all `*.scss/*.sass` files in the current working directory and inner, except `node_modules/**`:
+After you've done that you should be able to use the `happiness-scss` program. The simplest use case would be checking the style of all files in the current working directory and inner (`./**/*.s+(a|c)ss`),  
+_**NOTE!** it's always ignore `./node_modules/**`:_
 
 ```shell
 happiness-scss
@@ -143,7 +144,7 @@ Only rock-n-roll and _happiness-scss_
 
 ## Disabling Linters via Source
 
-Happiness works on [Sass Lint](https://www.npmjs.com/package/sass-lint), so you can use special comments to disable and enable certain rules throughout your source files in a variety of scenarios.
+Happiness SCSS works on [Sass Lint](https://www.npmjs.com/package/sass-lint), so you can use special comments to disable and enable certain rules throughout your source files in a variety of scenarios.
 
 Below are examples of how to use this feature:
 

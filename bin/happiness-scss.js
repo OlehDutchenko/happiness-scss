@@ -86,9 +86,9 @@ if (program.ignore && program.ignore !== true) {
 	configOptions.files.ignore.push('./node_modules/**'); // always ignore node_modules
 }
 
-if (program.syntax && ['sass', 'scss'].indexOf(program.syntax) > -1) {
-	configOptions.syntax = program.syntax;
-}
+// if (program.syntax && ['sass', 'scss'].indexOf(program.syntax) > -1) {
+// 	configOptions.syntax = program.syntax;
+// }
 
 if (program.format && program.format !== true) {
 	configOptions.options.formatter = program.format;
@@ -98,9 +98,9 @@ if (program.output && program.output !== true) {
 	configOptions.options['output-file'] = program.output;
 }
 
-if (program.maxWarnings && program.maxWarnings !== true) {
-	configOptions.options['max-warnings'] = program.maxWarnings;
-}
+// if (program.maxWarnings && program.maxWarnings !== true) {
+// 	configOptions.options['max-warnings'] = program.maxWarnings;
+// }
 
 // load our config here so we only load it once for each file
 config = lint.getConfig(configOptions, configPath);

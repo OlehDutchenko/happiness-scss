@@ -1,0 +1,4 @@
+.foo {
+	@extend %bar;
+	@include baz();
+}
