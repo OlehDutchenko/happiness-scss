@@ -3,10 +3,11 @@
 ![working in progress](https://img.shields.io/badge/Status-WIP-red.svg)
 ![npm](https://img.shields.io/badge/node-6.3.1-yellow.svg)
 [![license](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/dutchenkoOleg/gulp-happiness/blob/master/LICENSE)
+[![Dependencies](https://www.versioneye.com/user/projects/592e84d1c0295d003a53fce3/badge.svg?style=flat)](https://www.versioneye.com/user/projects/592e84d1c0295d003a53fce3?child=summary)
 [![Build Status](https://travis-ci.org/dutchenkoOleg/happiness-scss.svg?branch=master)](https://travis-ci.org/dutchenkoOleg/gulp-happiness)
 
 > ___One Style You Might Like___  
-> ___It is Coming Soon ;)___
+> ___It is already here ;)___
 
 [![js happiness style](https://cdn.rawgit.com/JedWatson/happiness/master/badge.svg)](https://github.com/JedWatson/happiness)
 [![Happiness SCSS Style](https://cdn.rawgit.com/dutchenkoOleg/happiness-scss/master/badge.svg)](https://github.com/dutchenkoOleg/happiness-scss)
@@ -87,28 +88,184 @@ happiness-scss -i "./test/fixtures/function-name-format.scss"
 happiness-scss -i "./test/**, ./dev/wip/**"
 ```
 
-##### `-o,--output [output]`
+##### `-o, --output [output]`
 
-The path plus file name relative to where Sass Lint is being run from where the output should be written to.
+The path plus file name relative to where `happiness-scss` is being run from where the output should be written to.
 
 
 ```shell
 # json
-happiness-scss -f json -o "./tmp/lint-result.json"
+happiness-scss -f json -o "./tmp/lint-results.json"
 
 # html
-happiness-scss -f html -o "./tmp/lint-result.html"
+happiness-scss -f html -o "./tmp/lint-results.html"
 ```
 
-##### `-V,--version`
+##### `-q, --no-exit`
+
+Prevents the CLI from throwing an error if there is one (useful for development work)
+
+##### `-V, --version`
 
 Outputs the version number of Happiness SCSS
 
 ---
 
-### Node.js API
+## Node.js API
 
-_wip_
+Install `happiness-scss` in your project
+
+```shell
+npm i --save happiness-scss
+# or using yarn cli
+yarn add happiness-scss
+```
+
+
+#### happinessScss.lintText(file, config, cb)
+
+Runs each rule against sass-lint AST tree
+
+_Parameters:_
+
+Name | Data type | Attributes | Description
+ --- | --- | --- | ---
+ `file` | `Object` |  | file object from `fs.readFileSync`
+ `config` | `Object` | \<optional> | little configuration, see example below
+ `cb` | `function` | \<optional> | see description below
+ 
+##### `config`
+
+Here you can set few parameters
+```js
+const myConfig = {
+	formatter: 'stylish',
+	outputFile: './path/to/output.file',
+	ignore: [ // must be an Array
+		'./sass/vendor/**/*.scss',
+		'./sass/test/**/*.scss'
+		// Note! './node_modules/**' is always in ignore
+	]
+}
+```
+ 
+##### `cb(err, data)`
+
+Callback for handing errors or resulting data.  
+_Example_
+
+```js
+const fs = require('fs');
+const path = require('path');
+const happinessScss = require('happiness-scss');
+
+const testFile = fs.readFileSync(path.join(__dirname, './fixtures/no-ids.scss'));
+
+happinessScss.lintText(testFile, null, function(err, data) {
+	if (err) {
+		// handle errors
+	}
+	// handle data
+});
+```
+
+
+#### happinessScss.lintFileText(file, config, cb)
+
+Handles ignored files for plugins such as the gulp plugin. Checks every file passed to it against the ignores as specified in users config or passed in default config.
+
+_Parameters:_
+
+Name | Data type | Attributes | Description
+ --- | --- | --- | ---
+ `file` | `Object` |  | The file/text to be linted
+ `config` | `Object` | \<optional> | little configuration, see example in [happinessScss.lintText → config](#config)
+ `cb` | `function` | \<optional> | see description in [happinessScss.lintText → cb(err, data)](#cberr-data)
+
+
+
+#### happinessScss.lintFiles(files, config, cb)
+
+Takes a glob pattern or target string and creates an array of files as targets for linting taking into account any user specified
+
+_Parameters:_
+
+Name | Data type | Attributes | Description
+ --- | --- | --- | ---
+ `files` | `string` |  | a glob pattern or single file path as a lint target
+ `config` | `Object` | \<optional> | little configuration, see example in [happinessScss.lintText → config](#config)
+ `cb` | `function` | \<optional> | see description in [happinessScss.lintText → cb(err, data)](#cberr-data)
+
+###### Live example of usage
+
+```js
+const path = require('path');
+const happinessScss = require('happiness-scss');
+
+function pathTo (glob) {
+	return path.join(__dirname, glob);
+}
+
+happinessScss.lintFiles(pathTo('./fixtures/**.scss'),  {
+	ignore: [
+		pathTo('./fixtures/hex-notation.scss')
+	]
+}, function(err, data) {
+	if (err) {
+		throw new Error(err);
+	}
+	
+	if (data.errorCount.count) {
+		let formatted = happinessScss.format(data.results, {
+			formatter: 'table'
+		});
+
+		console.log(formatted);
+
+		happinessScss.outputResults(data.results, {
+			formatter: 'html',
+			outputFile: pathTo('../tmp/lint-files-output.html')
+		});
+	}
+});
+```
+
+#### errorCount(results)
+
+Parses results object to count errors and return paths to files with detected errors.  
+_Returns errors object containing the error count and paths for files incl. errors_
+
+#### warningCount(results)
+
+Parses results object to count warnings and return paths to files with detected warnings.   
+_Returns warnings object containing the error count and paths for files incl. warnings_
+
+#### resultCount(results)
+
+Parses results object to count warnings and errors and return a cumulative count of both  
+_Returns the cumulative count (`number`) of errors and warnings detected_
+
+#### format (results, config)
+
+Handles formatting of results using EsLint formatters
+
+- see [Live example of usage](#live-example-of-usage)
+- see [happinessScss.lintText → config](#config)
+
+_Returns results in the specified format as string. Use console.log(formattedResult) for showing in console_
+
+#### outputResults (results, config)
+
+Handles outputting results whether this be straight to the console/stdout or to a file. Passes results to the format function to ensure results are output in the chosen format
+
+- see [Live example of usage](#live-example-of-usage)
+- see [happinessScss.lintText → config](#config)
+
+#### failOnError (results, config)
+
+Throws an error if there are any errors detected. The error includes a count of all errors and a list of all files that include errors.
+
+_No returns value. Just scream if has errors ;)_
 
 ---
 
@@ -116,9 +273,15 @@ _wip_
 
 Please read [RULES.md](https://github.com/dutchenkoOleg/happiness-scss/blob/master/RULES.md)
 
+#### Making you more happy ;)
+
+> We decided to wait a month and let us all discuss the above rules with the possibility of making adjustments.
+>  
+> You can propose your changes via PRs or by creating an [issues](https://github.com/dutchenkoOleg/happiness-scss/issues). On one condition that you give reasons why certain rules should be changed. We will discuss and accept the final decision on July 1, 2017
+
 ## I disagree with rule X, can you change it?
 
-No. The whole point of `happiness-scss` is to save you time by avoiding [bikeshedding](https://www.freebsd.org/doc/en/books/faq/misc.html#bikeshed-painting) about code style. There are lots of debates online about tabs vs. spaces, etc. that will never be resolved. These debates just distract from getting stuff done. At the end of the day you have to 'just pick something', and that's the whole philosophy of `happiness-scss` -- its a bunch of sensible 'just pick something' opinions. Hopefully, users see the value in that over defending their own opinions.
+After "_the Day of Judgment_" (July 1, 2017) - No. The whole point of `happiness-scss` is to save you time by avoiding [bikeshedding](https://www.freebsd.org/doc/en/books/faq/misc.html#bikeshed-painting) about code style. There are lots of debates online about tabs vs. spaces, etc. that will never be resolved. These debates just distract from getting stuff done. At the end of the day you have to 'just pick something', and that's the whole philosophy of `happiness-scss` - its a bunch of sensible 'just pick something' opinions. Hopefully, users see the value in that over defending their own opinions.
 
 > **Pro tip:** Just use `happiness-scss` and move on.    
 > There are actual real problems that you could spend your time solving! ;)
@@ -129,7 +292,7 @@ No. The whole point of `happiness-scss` is to save you time by avoiding [bikeshe
 
 > If you do not want to, do not use it. And be happy without it ;)
 
-In defense of happiness it is better to quote part of the description from the [standardjs.com](https://standardjs.com/index.html#why-should-i-use-javascript-standard-style)
+In defense of `happiness-scss` it is better to quote part of the description from the [standardjs.com](https://standardjs.com/index.html#why-should-i-use-javascript-standard-style)
 
 > The beauty of ~~JavaScript Standard~~ Happiness SCSS is that it's simple. No one wants to maintain multiple hundred-line style configuration files for every module/project they work on. Enough of this madness!
 
@@ -238,6 +401,17 @@ Yes! If you use `happiness-scss` in your project, you can include one of these b
 ### Is there an automatic formatter?
 
 Sorry, there no automatic formatter.
+
+---
+
+## Task Runner Integration
+
+- [gulp-happiness-scss](https://www.npmjs.com/package/gulp-happiness-scss) _Coming Soon_
+
+
+## TextEditor/IDE Integration
+
+[Coming soon](https://github.com/dutchenkoOleg/happiness-scss/issues/3)
 
 ---
 
