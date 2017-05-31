@@ -1,7 +1,6 @@
 options:
   formatter: stylish
   verbose: true
-  no-exit: true
 files:
   include:
     - './**/*.s+(a|c)ss'

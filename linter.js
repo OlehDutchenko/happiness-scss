@@ -15,6 +15,69 @@ const sassLint = require('sass-lint');
 // Private
 // ----------------------------------------
 
+/**
+ * Transform user config for linter config
+ * @private
+ * @param {Object} [config]
+ * @returns {Object}
+ */
+function transformConfig (config) {
+	if (config === null || typeof config !== 'object') {
+		config = {};
+	}
+
+	if (!Object.keys(config).length) {
+		return {};
+	}
+
+	let runConfig = {};
+
+	if (config.formatter) {
+		runConfig.options = runConfig.options || {};
+		runConfig.options.formatter = config.formatter;
+	}
+	if (config.outputFile) {
+		runConfig.options = runConfig.options || {};
+		runConfig.options['output-file'] = config.outputFile;
+	}
+	if (Array.isArray(config.ignore)) {
+		runConfig.files = {
+			ignore: config.ignore.concat('./node_modules/**')
+		};
+	}
+
+	return runConfig;
+}
+
+/**
+ * Creating linting methods with happiness-scss configPath
+ * @param {string} mtd
+ * @param {string} file
+ * @param {Object} [config]
+ * @param {function} [cb]
+ * @param {string} configPath
+ */
+function lintMethod (mtd, file, config, cb, configPath) {
+	let runConfig = transformConfig(config);
+	console.log(runConfig);
+
+	if (typeof cb !== 'function') {
+		cb = function () {};
+	}
+
+	try {
+		let results = sassLint[mtd](file, runConfig, configPath);
+		let data = {
+			results,
+			errorCount: sassLint.errorCount(results),
+			warningCount: sassLint.warningCount(results)
+		};
+		cb(null, data);
+	} catch (err) {
+		cb(err);
+	}
+}
+
 class Linter {
 	/**
 	 * @param {string} configPath
@@ -24,71 +87,112 @@ class Linter {
 	}
 
 	/**
-	 * Creating linting methods with happiness-scss configPath
-	 * @param {string} mtd
-	 * @param {string} file
-	 * @param {object} [options={}]
-	 * @param {function} [cb]
-	 */
-	lintMethod (mtd, file, options = {}, cb) {
-		if (options && options.rules) {
-			delete options.rules;
-		}
-
-		if (typeof cb !== 'function') {
-			cb = function () {};
-		}
-
-		try {
-			let results = sassLint[mtd](file, options, this.configPath);
-			let data = {
-				results,
-				errorCount: sassLint.errorCount(results),
-				warningCount: sassLint.warningCount(results)
-			};
-
-			cb(null, data);
-		} catch (err) {
-			cb(err, null);
-		}
-	}
-
-	/**
 	 * Runs each rule against sass-lint AST tree.
-	 * After linting - run callback for user processing
+	 * After linting - run callback for data processing
 	 *
-	 * @param {object} file file object from fs.readFileSync
-	 * @param {object} options user specified rules/options passed in
+	 * @param {Object} file file object from fs.readFileSync
+	 * @param {Object} config user specified rules/config passed in
 	 * @param {function} cb
 	 */
-	lintText (file, options, cb) {
-		this.lintMethod('lintText', file, options, cb);
+	lintText (file, config, cb) {
+		return lintMethod('lintText', file, config, cb, this.configPath);
 	}
 
 	/**
 	 * Handles ignored files for plugins such as the gulp plugin. Checks every file passed to it against
-	 * the ignores as specified in our users config or passed in options.
-	 * After linting - run callback for user processing
+	 * the ignores as specified in users config or passed in default config.
+	 * After linting - run callback for data processing
 	 *
-	 * @param {object} file - The file/text to be linted
-	 * @param {object} options - The user defined options directly passed in
+	 * @param {Object} file - The file/text to be linted
+	 * @param {Object} config - The user defined config directly passed in
 	 * @param {function} cb
 	 */
-	lintFileText (file, options, cb) {
-		this.lintMethod('lintFileText', file, options, cb);
+	lintFileText (file, config, cb) {
+		return lintMethod('lintFileText', file, config, cb, this.configPath);
 	}
 
 	/**
 	 * Takes a glob pattern or target string and creates an array of files as targets for
 	 * linting taking into account any user specified ignores.
-	 * After linting - run callback for user processing
+	 * After linting - run callback for data processing
 	 *
 	 * @param {string} files a glob pattern or single file path as a lint target
-	 * @param {object} options user specified rules/options passed in
+	 * @param {Object} config user specified rules/config passed in
 	 * @param {function} cb
 	 */
-	lintFiles (file, options, cb) {
-		this.lintMethod('lintFiles', file, options, cb);
+	lintFiles (files, config, cb) {
+		return lintMethod('lintFiles', files, config, cb, this.configPath);
+	}
+
+	/**
+	 * Parses results object to count errors and return
+	 * paths to files with detected errors.
+	 *
+	 * @param {Object} results results object
+	 * @returns {Object} errors object containing the error count and paths for files incl. errors
+	 */
+	errorCount (results) {
+		sassLint.errorCount(results);
+	}
+
+	/**
+	 * Parses results object to count warnings and return
+	 * paths to files with detected warnings.
+	 *
+	 * @param {Object} results results object
+	 * @returns {Object} warnings object containing the error count and paths for files incl. warnings
+	 */
+	warningCount (results) {
+		return sassLint.warningCount(results);
+	}
+
+	/**
+	 * Parses results object to count warnings and errors and return
+	 * a cumulative count of both
+	 *
+	 * @param {Object} results results object
+	 * @returns {int} the cumulative count of errors and warnings detected
+	 */
+	resultCount (results) {
+		return sassLint.resultCount(results);
+	}
+
+	/**
+	 * Handles formatting of results using EsLint formatters
+	 *
+	 * @param {Object} results our results object
+	 * @param {Object} config user specified rules/config passed in
+	 * @returns {Object} results results in the specified format as string
+	 */
+	format (results, config) {
+		config = transformConfig(config);
+		return sassLint.format(results, config, this.configPath);
+	}
+
+	/**
+	 * Handles outputting results whether this be straight to the console/stdout or to a file.
+	 * Passes results to the format function to ensure results are output in the chosen format
+	 *
+	 * @param {Object} results our results object
+	 * @param {Object} config user specified rules/config passed in
+	 * @returns {Object} results our results object
+	 */
+	outputResults (results, config) {
+		config = transformConfig(config);
+		return sassLint.outputResults(results, config, this.configPath);
+	}
+
+	/**
+	 * Throws an error if there are any errors detected. The error includes a count of all errors
+	 * and a list of all files that include errors.
+	 *
+	 * @param {Object} results - our results object
+	 * @param {Object} [config] - extra config to use when running failOnError
+	 * @returns {void}
+	 */
+	failOnError (results, config) {
+		config = transformConfig(config);
+		return sassLint.failOnError(results, config, this.configPath);
 	}
 }
 
