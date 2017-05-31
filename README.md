@@ -3,10 +3,11 @@
 ![working in progress](https://img.shields.io/badge/Status-WIP-red.svg)
 ![npm](https://img.shields.io/badge/node-6.3.1-yellow.svg)
 [![license](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/dutchenkoOleg/gulp-happiness/blob/master/LICENSE)
+[![Dependencies](https://www.versioneye.com/user/projects/592e84d1c0295d003a53fce3/badge.svg?style=flat)](https://www.versioneye.com/user/projects/592e84d1c0295d003a53fce3?child=summary)
 [![Build Status](https://travis-ci.org/dutchenkoOleg/happiness-scss.svg?branch=master)](https://travis-ci.org/dutchenkoOleg/gulp-happiness)
 
 > ___One Style You Might Like___  
-> ___It is Coming Soon ;)___
+> ___It is already here ;)___
 
 [![js happiness style](https://cdn.rawgit.com/JedWatson/happiness/master/badge.svg)](https://github.com/JedWatson/happiness)
 [![Happiness SCSS Style](https://cdn.rawgit.com/dutchenkoOleg/happiness-scss/master/badge.svg)](https://github.com/dutchenkoOleg/happiness-scss)
@@ -272,9 +273,15 @@ _No returns value. Just scream if has errors ;)_
 
 Please read [RULES.md](https://github.com/dutchenkoOleg/happiness-scss/blob/master/RULES.md)
 
+#### Making you more happy ;)
+
+> We decided to wait a month and let us all discuss the above rules with the possibility of making adjustments.
+>  
+> You can propose your changes via PRs or by creating an [issues](https://github.com/dutchenkoOleg/happiness-scss/issues). On one condition that you give reasons why certain rules should be changed. We will discuss and accept the final decision on July 1, 2017
+
 ## I disagree with rule X, can you change it?
 
-No. The whole point of `happiness-scss` is to save you time by avoiding [bikeshedding](https://www.freebsd.org/doc/en/books/faq/misc.html#bikeshed-painting) about code style. There are lots of debates online about tabs vs. spaces, etc. that will never be resolved. These debates just distract from getting stuff done. At the end of the day you have to 'just pick something', and that's the whole philosophy of `happiness-scss` - its a bunch of sensible 'just pick something' opinions. Hopefully, users see the value in that over defending their own opinions.
+After "_the Day of Judgment_" (July 1, 2017) - No. The whole point of `happiness-scss` is to save you time by avoiding [bikeshedding](https://www.freebsd.org/doc/en/books/faq/misc.html#bikeshed-painting) about code style. There are lots of debates online about tabs vs. spaces, etc. that will never be resolved. These debates just distract from getting stuff done. At the end of the day you have to 'just pick something', and that's the whole philosophy of `happiness-scss` - its a bunch of sensible 'just pick something' opinions. Hopefully, users see the value in that over defending their own opinions.
 
 > **Pro tip:** Just use `happiness-scss` and move on.    
 > There are actual real problems that you could spend your time solving! ;)
@@ -394,6 +401,17 @@ Yes! If you use `happiness-scss` in your project, you can include one of these b
 ### Is there an automatic formatter?
 
 Sorry, there no automatic formatter.
+
+---
+
+## Task Runner Integration
+
+- [gulp-happiness-scss](https://www.npmjs.com/package/gulp-happiness-scss) _Coming Soon_
+
+
+## TextEditor/IDE Integration
+
+[Coming soon](https://github.com/dutchenkoOleg/happiness-scss/issues/3)
 
 ---
 

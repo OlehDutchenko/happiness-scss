@@ -2,7 +2,17 @@
 
 :back: [README.md](./README.md)
 
-> The best way to learn about happinness-scss is to just install it and give it a try on your code
+> The best way to learn about `happinness-scss` is to just install it and give it a try on your code
+
+---
+
+## Making you more happy ;)
+
+> We decided to wait a month and let us all discuss the above rules with the possibility of making adjustments.
+>  
+> You can propose your changes via PRs or by creating an [issues](https://github.com/dutchenkoOleg/happiness-scss/issues). On one condition that you give reasons why certain rules should be changed. We will discuss and accept the final decision on July 1, 2017
+
+---
 
 ## Table of contents
 
