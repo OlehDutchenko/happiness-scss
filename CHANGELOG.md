@@ -7,6 +7,20 @@
 
 ---
 
+### [1.1.0] - 2017-06-01
+
+#### Added
+
+- `showMaxStack` options for nodejs API
+- [Github wiki](https://github.com/dutchenkoOleg/happiness-scss/wiki)
+- [Integration with IntelliJ IDEA](https://github.com/dutchenkoOleg/happiness-scss/wiki/Integration-with-IntelliJ-IDEA) description
+
+#### Changed
+
+- List of rules has been moved to wiki page [Rules](https://github.com/dutchenkoOleg/happiness-scss/wiki/Rules)
+
+---
+
 ### [1.0.1] - 2017-05-31
 
 - Clean dev logs
