@@ -193,7 +193,7 @@ class Linter {
 		let hiddenErrors = 0;
 		let showMaxStack = config.options.showMaxStack || 0;
 
-		if (showMaxStack >= 0) {
+		if (showMaxStack > 0) {
 			newResults.forEach(result => {
 				if (result.errorCount > showMaxStack) {
 					let resultHiddenErrors = result.errorCount - showMaxStack;
@@ -204,7 +204,7 @@ class Linter {
 			});
 		}
 
-		if (hiddenErrors >= 0) {
+		if (hiddenErrors > 0) {
 			tail = `\n\n\tNOTE! Showed maximum ${showMaxStack} errors for each result\n\tand ${hiddenErrors} errors was not printed in stack`;
 		}
 
