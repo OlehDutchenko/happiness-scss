@@ -140,6 +140,7 @@ Here you can set few parameters
 ```js
 const myConfig = {
 	formatter: 'stylish',
+	showMaxStack: 50, // if 0 is unlimited, see description below
 	outputFile: './path/to/output.file',
 	ignore: [ // must be an Array
 		'./sass/vendor/**/*.scss',
@@ -148,6 +149,34 @@ const myConfig = {
 	]
 }
 ```
+
+*showMaxStack*:
+
+This parameter will be useful for a huge list of errors when they do not even fit in the console.
+
+_Example if set `showMaxStack: 10`_
+
+```shell
+C:/Wezom/NodeModules/happiness-scss/tmp/huge.scss
+  1:0   error  line 1 exceeds the maximum line length of 120  max-line-length
+  1:1   error  Single line statements are not allowed         brace-style
+  1:1   error  Space expected between blocks                  empty-line-between-blocks
+  1:9   error  Commas should be followed by a space           space-after-comma
+  1:10  error  Selectors must be placed on new lines          single-line-per-selector
+  1:20  error  Commas should be followed by a space           space-after-comma
+  1:21  error  Selectors must be placed on new lines          single-line-per-selector
+  1:31  error  Combinators are not allowed                    no-combinators
+  1:40  error  Whitespace required before {                   space-before-brace
+  1:48  error  Space expected after `:`                       space-after-colon
+
+✖ 10 problems (10 errors, 0 warnings)
+
+
+        NOTE! Showed maximum 10 errors for each result
+        and 8123 errors was not printed in stack
+```
+
+_**Note!** This option is available only for `.format()` method in nodejs API_
  
 ##### `cb(err, data)`
 
@@ -217,7 +246,8 @@ happinessScss.lintFiles(pathTo('./fixtures/**.scss'),  {
 	
 	if (data.errorCount.count) {
 		let formatted = happinessScss.format(data.results, {
-			formatter: 'table'
+			formatter: 'table',
+			showMaxStack: 50
 		});
 
 		console.log(formatted);
@@ -271,7 +301,7 @@ _No returns value. Just scream if has errors ;)_
 
 ## Rules
 
-Please read [RULES.md](https://github.com/dutchenkoOleg/happiness-scss/blob/master/RULES.md)
+Please read [happiness-scss / wiki / Rules](https://github.com/dutchenkoOleg/happiness-scss/wiki/Rules)
 
 #### Making you more happy ;)
 
@@ -411,7 +441,11 @@ Sorry, there no automatic formatter.
 
 ## TextEditor/IDE Integration
 
-[Coming soon](https://github.com/dutchenkoOleg/happiness-scss/issues/3)
+Already available solutions
+
+- [Integration with IntelliJ IDEA](https://github.com/dutchenkoOleg/happiness-scss/wiki/Integration-with-IntelliJ-IDEA)
+
+Also we have [opened issue](https://github.com/dutchenkoOleg/happiness-scss/issues/3) for wanted list.
 
 ---
 

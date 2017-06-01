@@ -37,20 +37,26 @@ function transformConfig (config) {
 
 	if (!Object.keys(config).length) {
 		return {
+			options: {},
 			files: {
 				ignore: [ignoreNodeModules()]
 			}
 		};
 	}
 
-	let runConfig = {};
+	let runConfig = {
+		options: {
+			showMaxStack: 0
+		}
+	};
 
 	if (config.formatter) {
-		runConfig.options = runConfig.options || {};
 		runConfig.options.formatter = config.formatter;
 	}
+	if (config.showMaxStack >= 0) {
+		runConfig.options.showMaxStack = config.showMaxStack;
+	}
 	if (config.outputFile) {
-		runConfig.options = runConfig.options || {};
 		runConfig.options['output-file'] = config.outputFile;
 	}
 	if (Array.isArray(config.ignore)) {
@@ -182,7 +188,27 @@ class Linter {
 	 */
 	format (results, config) {
 		config = transformConfig(config);
-		return sassLint.format(results, config, this.configPath);
+		let newResults = JSON.parse(JSON.stringify(results));
+		let tail = '';
+		let hiddenErrors = 0;
+		let showMaxStack = config.options.showMaxStack || 0;
+
+		if (showMaxStack >= 0) {
+			newResults.forEach(result => {
+				if (result.errorCount > showMaxStack) {
+					let resultHiddenErrors = result.errorCount - showMaxStack;
+
+					hiddenErrors += resultHiddenErrors;
+					result.messages = result.messages.slice(0, showMaxStack);
+				}
+			});
+		}
+
+		if (hiddenErrors >= 0) {
+			tail = `\n\n\tNOTE! Showed maximum ${showMaxStack} errors for each result\n\tand ${hiddenErrors} errors was not printed in stack`;
+		}
+
+		return sassLint.format(newResults, config, this.configPath) + tail;
 	}
 
 	/**
