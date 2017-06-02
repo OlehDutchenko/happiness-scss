@@ -34,6 +34,47 @@ var program = require('commander'),
 
 delete meta.sasslintConfig;
 
+/**
+ * Handles formatting of results using EsLint formatters
+ * @override
+ *
+ * @param {object} results our results object
+ * @param {object} options user specified rules/options passed in
+ * @param {string} configPath path to a config file
+ * @returns {object} results our results object in the user specified format
+ */
+lint.format = function (results, options, configPath) {
+	var config = this.getConfig(options, configPath),
+		format = config.options.formatter.toLowerCase();
+
+	var formatted = require('eslint/lib/formatters/' + format);
+	let newResults = JSON.parse(JSON.stringify(results));
+	let tail = '';
+	let hiddenErrors = 0;
+	let showMaxStack = options.options.showMaxStack || 0;
+
+	if (config.options['output-file']) {
+		showMaxStack = 0;
+	}
+
+	if (showMaxStack > 0) {
+		newResults.forEach(result => {
+			if (result.errorCount > showMaxStack) {
+				let resultHiddenErrors = result.errorCount - showMaxStack;
+
+				hiddenErrors += resultHiddenErrors;
+				result.messages = result.messages.slice(0, showMaxStack);
+			}
+		});
+	}
+
+	if (hiddenErrors > 0) {
+		tail = `\n\tNOTE! Showed maximum ${showMaxStack} errors for each result\n\tand ${hiddenErrors} errors was not printed in console\n`;
+	}
+
+	return formatted(newResults) + tail;
+};
+
 var configPath = path.join(__dirname, '../.sass-lint.yml'),
 	config,
 	configOptions = {},
@@ -68,6 +109,7 @@ program
 	.option('-i, --ignore [pattern]', 'pattern to ignore. For multiple ignores, separate each pattern by `, ` within a string')
 	.option('-q, --no-exit', 'do not exit on errors')
 	// .option('-v, --verbose', 'verbose output') // always verbose
+	.option('-m, --show-max-stack [number]', 'print max errors in console, if 0 is unlimited') // addon
 	.option('-f, --format [format]', 'pass one of the available eslint formats')
 	.option('-o, --output [output]', 'the path and filename where you would like output to be written')
 	// .option('-s, --syntax [syntax]', 'syntax to evaluate the file(s) with (either sass or scss)') // filename extension-based syntax detection
@@ -92,6 +134,12 @@ if (program.ignore && program.ignore !== true) {
 
 if (program.format && program.format !== true) {
 	configOptions.options.formatter = program.format;
+}
+
+if (program.showMaxStack && program.showMaxStack > 0) {
+	configOptions.options.showMaxStack = program.showMaxStack;
+} else {
+	configOptions.options.showMaxStack = 0;
 }
 
 if (program.output && program.output !== true) {

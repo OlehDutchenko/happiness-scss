@@ -89,11 +89,19 @@ function lintMethod (mtd, file, config, cb, configPath) {
 
 	try {
 		let results = sassLint[mtd](file, runConfig, configPath);
+
+		if (mtd !== 'lintFiles') {
+			if (!Array.isArray(results)) {
+				results = [results];
+			}
+		}
+
 		let data = {
 			results,
 			errorCount: sassLint.errorCount(results),
 			warningCount: sassLint.warningCount(results)
 		};
+
 		cb(null, data);
 	} catch (err) {
 		cb(err);
@@ -112,13 +120,16 @@ class Linter {
 	 * Runs each rule against sass-lint AST tree.
 	 * After linting - run callback for data processing
 	 *
+	 * Not usefull, duplicate .lintFileText()
+	 * @deprecated
+	 *
 	 * @param {Object} file file object from fs.readFileSync
 	 * @param {Object} config user specified rules/config passed in
 	 * @param {function} cb
 	 */
-	lintText (file, config, cb) {
-		return lintMethod('lintText', file, config, cb, this.configPath);
-	}
+	// lintText (file, config, cb) {
+	// 	return lintMethod('lintText', file, config, cb, this.configPath);
+	// }
 
 	/**
 	 * Handles ignored files for plugins such as the gulp plugin. Checks every file passed to it against
@@ -205,7 +216,7 @@ class Linter {
 		}
 
 		if (hiddenErrors > 0) {
-			tail = `\n\n\tNOTE! Showed maximum ${showMaxStack} errors for each result\n\tand ${hiddenErrors} errors was not printed in stack`;
+			tail = `\n\tNOTE! Showed maximum ${showMaxStack} errors for each result\n\tand ${hiddenErrors} errors was not printed in console\n`;
 		}
 
 		return sassLint.format(newResults, config, this.configPath) + tail;

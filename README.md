@@ -101,6 +101,11 @@ happiness-scss -f json -o "./tmp/lint-results.json"
 happiness-scss -f html -o "./tmp/lint-results.html"
 ```
 
+##### `-m, --show-max-stack [number]`
+
+This will be useful for a huge list of errors when they do not even fit in the console. It will print max errors in console.  
+See example [`Nodejs Api → happinessScss.lintFileText() → config.showMaxStack`](#configshowmaxstack)
+
 ##### `-q, --no-exit`
 
 Prevents the CLI from throwing an error if there is one (useful for development work)
@@ -111,7 +116,7 @@ Outputs the version number of Happiness SCSS
 
 ---
 
-## Node.js API
+## Nodejs API
 
 Install `happiness-scss` in your project
 
@@ -122,18 +127,44 @@ yarn add happiness-scss
 ```
 
 
-#### happinessScss.lintText(file, config, cb)
+#### ~~happinessScss.lintText(file, config, cb)~~
 
-Runs each rule against sass-lint AST tree
+***removed!***, doing same as `.lintFileText()`
+
+
+#### happinessScss.lintFileText(file, config, cb)
+
+Handles ignored files for plugins such as the gulp plugin. Checks every file passed to it against the ignores as specified in users config or passed in default config.
 
 _Parameters:_
 
 Name | Data type | Attributes | Description
  --- | --- | --- | ---
- `file` | `Object` |  | file object from `fs.readFileSync`
+ `file` | `Object` |  | object, see example below
  `config` | `Object` | \<optional> | little configuration, see example below
  `cb` | `function` | \<optional> | see description below
  
+##### `file`
+
+This must be an object with following properties:
+
+- text (string) - content for checking
+- format (string) - syntax definition
+- filename (string) - name of checking file with relative path
+
+_Example:_
+
+```js
+let testFilePath = './fixtures/hex-notation.scss';
+let testFile = {
+	text: fs.readFileSync(testFilePath).toString(),
+	format: path.extname(testFilePath).replace('.', ''), // scss
+	filename: testFilePath
+};
+
+happinessScss.lintFileText(testFile);
+```
+
 ##### `config`
 
 Here you can set few parameters
@@ -147,12 +178,14 @@ const myConfig = {
 		'./sass/test/**/*.scss'
 		// Note! './node_modules/**' is always in ignore
 	]
-}
+};
 ```
 
-*showMaxStack*:
+###### `config.showMaxStack`:
 
-This parameter will be useful for a huge list of errors when they do not even fit in the console.
+Default value `0`.
+
+This parameter will be useful for a huge list of errors when they do not even fit in the console. It will print max errors in console. 
 
 _Example if set `showMaxStack: 10`_
 
@@ -171,9 +204,9 @@ C:/Wezom/NodeModules/happiness-scss/tmp/huge.scss
 
 ✖ 10 problems (10 errors, 0 warnings)
 
-
         NOTE! Showed maximum 10 errors for each result
-        and 8123 errors was not printed in stack
+        and 8123 errors was not printed in console
+        
 ```
 
 _**Note!** This option is available only for `.format()` method in nodejs API_
@@ -199,20 +232,6 @@ happinessScss.lintText(testFile, null, function(err, data) {
 ```
 
 
-#### happinessScss.lintFileText(file, config, cb)
-
-Handles ignored files for plugins such as the gulp plugin. Checks every file passed to it against the ignores as specified in users config or passed in default config.
-
-_Parameters:_
-
-Name | Data type | Attributes | Description
- --- | --- | --- | ---
- `file` | `Object` |  | The file/text to be linted
- `config` | `Object` | \<optional> | little configuration, see example in [happinessScss.lintText → config](#config)
- `cb` | `function` | \<optional> | see description in [happinessScss.lintText → cb(err, data)](#cberr-data)
-
-
-
 #### happinessScss.lintFiles(files, config, cb)
 
 Takes a glob pattern or target string and creates an array of files as targets for linting taking into account any user specified
@@ -222,8 +241,8 @@ _Parameters:_
 Name | Data type | Attributes | Description
  --- | --- | --- | ---
  `files` | `string` |  | a glob pattern or single file path as a lint target
- `config` | `Object` | \<optional> | little configuration, see example in [happinessScss.lintText → config](#config)
- `cb` | `function` | \<optional> | see description in [happinessScss.lintText → cb(err, data)](#cberr-data)
+ `config` | `Object` | \<optional> | little configuration, see example in [happinessScss.lintFileText() → config](#config)
+ `cb` | `function` | \<optional> | see description in [happinessScss.lintFileText() → cb(err, data)](#cberr-data)
 
 ###### Live example of usage
 

@@ -7,6 +7,18 @@
 
 ---
 
+### [2.0.1] - 2017-06-02
+
+### Breaking changes in Nodejs API
+
+- `happinessScss.lintText()` is ***removed!***, doing same as `happinessScss.lintFileText()`
+
+#### Added
+
+- `showMaxStack` options for Nodejs API, use `-m, --show-max-stack [number]`
+
+---
+
 ### [1.1.2] - 2017-06-01
 
 - Fixed incorrect comparison operator
@@ -17,7 +29,7 @@
 
 #### Added
 
-- `showMaxStack` options for nodejs API
+- `showMaxStack` options for Nodejs API
 - [Github wiki](https://github.com/dutchenkoOleg/happiness-scss/wiki)
 - [Integration with IntelliJ IDEA](https://github.com/dutchenkoOleg/happiness-scss/wiki/Integration-with-IntelliJ-IDEA) description
 

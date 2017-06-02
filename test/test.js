@@ -24,14 +24,15 @@ function pathTo (glob) {
 function printData(data, outputPath, outputFormatter = 'html') {
 	if (data.errorCount.count) {
 		let formatted = happinessScss.format(data.results, {
-			formatter: 'table'
+			formatter: 'table',
+			showMaxStack: 5
 		});
 
 		console.log(formatted);
 
 		happinessScss.outputResults(data.results, {
 			formatter: outputFormatter,
-			outputFile: outputPath;
+			outputFile: outputPath
 		});
 	}
 }
@@ -41,7 +42,13 @@ function printData(data, outputPath, outputFormatter = 'html') {
 // ----------------------------------------
 
 // lintText
-happinessScss.lintText(pathTo('./fixtures/hex-notation.scss'), null, function(err, data) {
+let testFilePath = pathTo('./fixtures/hex-notation.scss');
+
+happinessScss.lintFileText({
+	text: fs.readFileSync(testFilePath).toString(),
+	format: path.extname(testFilePath).replace('.', ''), // scss
+	filename: testFilePath
+}, null, function(err, data) {
 	if (err) {
 		throw new Error(err);
 	}
