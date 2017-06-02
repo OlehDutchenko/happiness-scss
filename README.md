@@ -104,7 +104,12 @@ happiness-scss -f html -o "./tmp/lint-results.html"
 ##### `-m, --show-max-stack [number]`
 
 This will be useful for a huge list of errors when they do not even fit in the console. It will print max errors in console.  
-See example [`Nodejs Api → happinessScss.lintFileText() → config.showMaxStack`](#configshowmaxstack)
+See example [`Nodejs Api → happinessScss.lintFileText() → config.showMaxStack`](#configshowmaxstack).
+
+```shell
+# max 100 errors will be printed, `-q` not to fall
+happiness-scss -m 100 -q
+```
 
 ##### `-q, --no-exit`
 
