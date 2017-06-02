@@ -67,7 +67,7 @@ Outputs usage information for the CLI
 
 Default formatter `stylish`
 
-Your also cane choose one of the available [Eslint formats](https://github.com/eslint/eslint/tree/master/lib/formatters) to format the output of sass-lint results
+Your also can choose one of the available [Eslint formats](https://github.com/eslint/eslint/tree/master/lib/formatters) to format the output of sass-lint results
 
 ```shell
 happiness-scss -f table
@@ -186,7 +186,7 @@ const myConfig = {
 };
 ```
 
-###### `config.showMaxStack`:
+###### `config.showMaxStack`
 
 Default value `0`.
 

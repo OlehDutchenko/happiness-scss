@@ -7,6 +7,14 @@
 
 ---
 
+### [2.0.3] - 2017-06-02
+
+### Fixed
+
+- Typo in `README.md`
+
+---
+
 ### [2.0.1] - 2017-06-02
 
 ### Breaking changes in Nodejs API
