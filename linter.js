@@ -10,23 +10,11 @@
 // ----------------------------------------
 
 const path = require('path');
-const sassLint = require('sass-lint');
+const sassLint = require('./libs/sass-lint');
 
 // ----------------------------------------
 // Private
 // ----------------------------------------
-
-const lintText = sassLint.lintText;
-
-sassLint.lintText = function (file, options, configPath) {
-	if (options.options.noDisabling) {
-		let text = String(file.text);
-
-		text = text.replace(/(\s|\t)*\/\/(\s|\t)+sass-lint(\s|\t)*:(\s|\t)*disable.+/ig, '');
-		file.text = text;
-	}
-	return lintText.call(this, file, options, configPath);
-};
 
 /**
  * Return correct path to `node_modules` folder in Current Working Directory (cwd)
@@ -214,28 +202,7 @@ class Linter {
 	 * @returns {Object} results results in the specified format as string
 	 */
 	format (results, config) {
-		config = transformConfig(config);
-		let newResults = JSON.parse(JSON.stringify(results));
-		let tail = '';
-		let hiddenErrors = 0;
-		let showMaxStack = config.options.showMaxStack || 0;
-
-		if (showMaxStack > 0) {
-			newResults.forEach(result => {
-				if (result.errorCount > showMaxStack) {
-					let resultHiddenErrors = result.errorCount - showMaxStack;
-
-					hiddenErrors += resultHiddenErrors;
-					result.messages = result.messages.slice(0, showMaxStack);
-				}
-			});
-		}
-
-		if (hiddenErrors > 0) {
-			tail = `\n\tNOTE! Showed maximum ${showMaxStack} errors for each result\n\tand ${hiddenErrors} errors was not printed in console\n`;
-		}
-
-		return sassLint.format(newResults, config, this.configPath) + tail;
+		return sassLint.format(results, transformConfig(config), this.configPath);
 	}
 
 	/**

@@ -30,65 +30,9 @@
 var program = require('commander'),
 	path = require('path'),
 	meta = require('../package.json'),
-	lint = require('sass-lint'); // change path to linter
+	lint = require('../libs/sass-lint'); // change path to linter
 
 delete meta.sasslintConfig;
-
-
-var lintText = lint.lintText;
-
-lint.lintText = function (file, options, configPath) {
-	if (options.options.noDisabling) {
-		let text = String(file.text);
-
-		text = text.replace(/(\s|\t)*\/\/(\s|\t)+sass-lint(\s|\t)*:(\s|\t)*disable.+/ig, '');
-		file.text = text;
-	}
-	return lintText.call(this, file, options, configPath)
-}
-
-/**
- * Handles formatting of results using EsLint formatters
- * @override
- *
- * @param {object} results our results object
- * @param {object} options user specified rules/options passed in
- * @param {string} configPath path to a config file
- * @returns {object} results our results object in the user specified format
- */
-lint.format = function (results, options, configPath) {
-	var config = this.getConfig(options, configPath),
-		format = config.options.formatter.toLowerCase();
-
-	var formatted = require('eslint/lib/formatters/' + format);
-	let newResults = JSON.parse(JSON.stringify(results));
-	let tail = '';
-	let hiddenErrors = 0;
-	let showMaxStack = options.options.showMaxStack || 0;
-
-	if (config.options['output-file']) {
-		showMaxStack = 0;
-	}
-
-	if (showMaxStack > 0) {
-		newResults.forEach(result => {
-			if (result.errorCount > showMaxStack) {
-				let resultHiddenErrors = result.errorCount - showMaxStack;
-
-				hiddenErrors += resultHiddenErrors;
-				result.messages = result.messages.slice(0, showMaxStack);
-			}
-		});
-	}
-
-	if (hiddenErrors > 0) {
-		tail = `\n\tNOTE! Showed maximum ${showMaxStack} errors for each result\n\tand ${hiddenErrors} errors was not printed in console\n`;
-	}
-
-	return formatted(newResults) + tail;
-};
-
-
 
 var configPath = path.join(__dirname, '../.sass-lint.yml'),
 	config,
