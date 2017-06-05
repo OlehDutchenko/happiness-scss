@@ -42,13 +42,16 @@ function printData(data, outputPath, outputFormatter = 'html') {
 // ----------------------------------------
 
 // lintText
-let testFilePath = pathTo('./fixtures/hex-notation.scss');
+let testFilePath = pathTo('./fixtures/empty-args.scss');
+console.log(testFilePath);
 
 happinessScss.lintFileText({
 	text: fs.readFileSync(testFilePath).toString(),
 	format: path.extname(testFilePath).replace('.', ''), // scss
 	filename: testFilePath
-}, null, function(err, data) {
+}, {
+	noDisabling: false
+}, function(err, data) {
 	if (err) {
 		throw new Error(err);
 	}

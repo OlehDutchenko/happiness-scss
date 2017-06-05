@@ -7,6 +7,14 @@
 
 ---
 
+### [2.1.0] - 2017-06-05
+
+### Added
+
+- Ignore disabling linters via comments
+
+---
+
 ### [2.0.3] - 2017-06-02
 
 ### Fixed

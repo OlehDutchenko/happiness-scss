@@ -16,6 +16,18 @@ const sassLint = require('sass-lint');
 // Private
 // ----------------------------------------
 
+const lintText = sassLint.lintText;
+
+sassLint.lintText = function (file, options, configPath) {
+	if (options.options.noDisabling) {
+		let text = String(file.text);
+
+		text = text.replace(/(\s|\t)*\/\/(\s|\t)+sass-lint(\s|\t)*:(\s|\t)*disable.+/ig, '');
+		file.text = text;
+	}
+	return lintText.call(this, file, options, configPath);
+};
+
 /**
  * Return correct path to `node_modules` folder in Current Working Directory (cwd)
  * @returns {string}
@@ -49,6 +61,10 @@ function transformConfig (config) {
 			showMaxStack: 0
 		}
 	};
+
+	if (config.noDisabling) {
+		runConfig.options.noDisabling = true;
+	}
 
 	if (config.formatter) {
 		runConfig.options.formatter = config.formatter;

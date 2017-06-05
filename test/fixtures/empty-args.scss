@@ -3,5 +3,5 @@
 }
 
 .bar {
-	@include bar();
+	@include bar; // sass-lint:disable-line empty-args
 }

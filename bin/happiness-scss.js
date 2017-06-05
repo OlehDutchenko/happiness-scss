@@ -34,6 +34,19 @@ var program = require('commander'),
 
 delete meta.sasslintConfig;
 
+
+var lintText = lint.lintText;
+
+lint.lintText = function (file, options, configPath) {
+	if (options.options.noDisabling) {
+		let text = String(file.text);
+
+		text = text.replace(/(\s|\t)*\/\/(\s|\t)+sass-lint(\s|\t)*:(\s|\t)*disable.+/ig, '');
+		file.text = text;
+	}
+	return lintText.call(this, file, options, configPath)
+}
+
 /**
  * Handles formatting of results using EsLint formatters
  * @override
@@ -75,6 +88,8 @@ lint.format = function (results, options, configPath) {
 	return formatted(newResults) + tail;
 };
 
+
+
 var configPath = path.join(__dirname, '../.sass-lint.yml'),
 	config,
 	configOptions = {},
@@ -101,13 +116,13 @@ var detectPattern = function (pattern, userConfig) {
 		lint.failOnError(detects, configOptions, configPath);
 	}
 };
-
 program
 	.version(meta.version)
 	.usage('[options] <pattern>')
 	// .option('-c, --config [path]', 'path to custom config file') // disable user config
 	.option('-i, --ignore [pattern]', 'pattern to ignore. For multiple ignores, separate each pattern by `, ` within a string')
 	.option('-q, --no-exit', 'do not exit on errors')
+	.option('-d, --no-disabling', 'disabling linters via comments are not working')
 	// .option('-v, --verbose', 'verbose output') // always verbose
 	.option('-m, --show-max-stack [number]', 'print max errors in console, if 0 is unlimited') // addon
 	.option('-f, --format [format]', 'pass one of the available eslint formats')
@@ -115,6 +130,7 @@ program
 	// .option('-s, --syntax [syntax]', 'syntax to evaluate the file(s) with (either sass or scss)') // filename extension-based syntax detection
 	// .option('--max-warnings [integer]', 'Number of warnings to trigger nonzero exit code') // disable
 	.parse(process.argv);
+
 
 configOptions.files = configOptions.files || {};
 configOptions.options = configOptions.options || {};
@@ -134,6 +150,10 @@ if (program.ignore && program.ignore !== true) {
 
 if (program.format && program.format !== true) {
 	configOptions.options.formatter = program.format;
+}
+
+if (!program.disabling) {
+	configOptions.options.noDisabling = true;
 }
 
 if (program.showMaxStack && program.showMaxStack > 0) {

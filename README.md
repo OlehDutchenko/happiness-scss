@@ -115,6 +115,11 @@ happiness-scss -m 100 -q
 
 Prevents the CLI from throwing an error if there is one (useful for development work)
 
+##### `-d, --no-disabling`
+
+[Disabling linters via source](#disabling-linters-via-source) will not work.  
+Yeah, only hard core!
+
 ##### `-V, --version`
 
 Outputs the version number of Happiness SCSS
@@ -178,6 +183,7 @@ const myConfig = {
 	formatter: 'stylish',
 	showMaxStack: 50, // if 0 is unlimited, see description below
 	outputFile: './path/to/output.file',
+	noDisabling: false // if true -> "Disabling linters via source" will not work
 	ignore: [ // must be an Array
 		'./sass/vendor/**/*.scss',
 		'./sass/test/**/*.scss'
@@ -363,8 +369,10 @@ Only rock-n-roll and _happiness-scss_
 
 Happiness SCSS works on [Sass Lint](https://www.npmjs.com/package/sass-lint), so you can use special comments to disable and enable certain rules throughout your source files in a variety of scenarios.
 
-Below are examples of how to use this feature:
+_**Note!** This comments may be ignored on linting process by [CLI](#-d---no-disabling) and [Nodejs API](#config) for strict checkout!_
 
+
+Below are examples of how to use this feature:  
 
 #### Disable a rule for the entire file
 
