@@ -7,10 +7,11 @@
 
 ---
 
-### [2.1.4] - 2017-06-06
+### [2.1.5] - 2017-06-06
 
 ### Added
 
+- Link to `gulp-happiness-scss`
 - Missed `npm run happiness-fix` command
 
 ### Removed

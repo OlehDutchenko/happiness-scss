@@ -468,7 +468,7 @@ Sorry, there no automatic formatter.
 
 ## Task Runner Integration
 
-- [gulp-happiness-scss](https://www.npmjs.com/package/gulp-happiness-scss) _Coming Soon_
+- [gulp-happiness-scss](https://www.npmjs.com/package/gulp-happiness-scss)
 
 
 ## TextEditor/IDE Integration
