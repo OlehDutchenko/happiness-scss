@@ -7,6 +7,18 @@
 
 ---
 
+### [2.1.4] - 2017-06-06
+
+### Added
+
+- Missed `npm run happiness-fix` command
+
+### Removed
+
+- `.idea` folder in npm package
+
+---
+
 ### [2.1.1] - 2017-06-05
 
 ### Added
