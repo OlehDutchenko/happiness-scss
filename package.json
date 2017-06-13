@@ -1,13 +1,13 @@
 {
   "name": "happiness-scss",
-  "version": "2.1.5",
+  "version": "3.0.0",
   "description": "SCSS happiness linter based on sass-lint",
   "main": "index.js",
   "bin": {
-    "happiness-scss": "./bin/happiness-scss.js"
+    "happiness-scss": "./bin/cmd.js"
   },
   "scripts": {
-    "test": "happiness \"./*.js\" --verbose | snazzy && echo \"happiness-scss version\" && node ./bin/happiness-scss.js -V && node ./bin/happiness-scss.js -q -m 10",
+    "test": "happiness \"./*.js\" --verbose | snazzy && echo \"happiness-scss version\" && node ./bin/cmd.js -V && node ./bin/cmd.js -q -m 10",
     "happiness-fix": "happiness \"./*.js\" --fix | snazzy"
   },
   "repository": {

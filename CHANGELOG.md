@@ -7,6 +7,14 @@
 
 ---
 
+### [3.0.0] - 2017-06-13
+
+### Breaking changes
+
+- Rename `./bin/happiness-scss.js` to `./bin/cmd.js`
+
+---
+
 ### [2.1.5] - 2017-06-06
 
 ### Added
