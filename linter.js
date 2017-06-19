@@ -11,6 +11,13 @@
 
 const path = require('path');
 const sassLint = require('./libs/sass-lint');
+const wipStatusMessage = require('./test/wip-status-message');
+
+// ----------------------------------------
+// Info message
+// ----------------------------------------
+
+wipStatusMessage();
 
 // ----------------------------------------
 // Private

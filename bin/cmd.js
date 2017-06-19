@@ -30,9 +30,12 @@
 var program = require('commander'),
 	path = require('path'),
 	meta = require('../package.json'),
+	wipStatusMessage = require('../test/wip-status-message'),
 	lint = require('../libs/sass-lint'); // change path to linter
 
 delete meta.sasslintConfig;
+
+wipStatusMessage();
 
 var configPath = path.join(__dirname, '../.sass-lint.yml'),
 	config,
