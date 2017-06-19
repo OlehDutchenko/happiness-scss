@@ -6,7 +6,7 @@ $foo: 1;
 $bar: 3;
 
 .bar {
-	margin: $foo + $bar + 'px';
+	margin: $foo + $bar + "px";
 }
 
 $foo: 1 + 1;

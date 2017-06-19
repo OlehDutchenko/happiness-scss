@@ -1,12 +1,13 @@
 .foo {
-	content: 'foo';
+	position: relative;
 
 	.bar {
-		content: 'bar';
+		position: absolute;
 
-		// Waldo
+		// comment
 		&--baz {
-			content: 'baz';
+			position: relative;
+			text-transform: uppercase;
 		}
 	}
 }

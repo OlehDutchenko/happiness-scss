@@ -1,11 +1,11 @@
 span {
-	&[lang='pt'] {
+	&[lang="pt"] {
 		text-decoration: underline;
 	}
 }
 
 strong {
-	&[class^='main'] {
+	&[class^="main"] {
 		text-decoration: none;
 	}
 }

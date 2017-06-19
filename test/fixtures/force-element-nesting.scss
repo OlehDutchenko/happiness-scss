@@ -1,6 +1,6 @@
 div {
 	p {
-		content: '';
+		content: "";
 	}
 }
 
@@ -13,15 +13,15 @@ div {
 .parent {
 	&__child {
 		h1 {
-			content: '';
+			content: "";
 		}
 	}
 }
 
 a {
-	&[target='_blank'] {
+	&[target="_blank"] {
 		span {
-			content: '';
+			content: "";
 		}
 	}
 }

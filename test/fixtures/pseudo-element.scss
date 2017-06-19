@@ -1,10 +1,10 @@
 .foo {
 	&::before {
-		content: 'bar';
+		content: "bar";
 	}
 
 	&::after {
-		content: 'baz';
+		content: "baz";
 	}
 
 	p {
@@ -19,12 +19,12 @@
 	}
 
 	&:hover {
-		content: 'bar';
+		content: "bar";
 	}
 }
 
 input {
-	&[type='number'] {
+	&[type="number"] {
 		&::-webkit-inner-spin-button,
 		&::-webkit-outer-spin-button {
 			height: auto;

@@ -4,18 +4,18 @@ $info-color: #00f;
 	@include bar();
 
 	color: $info-color;
-	content: 'baz';
+	content: "baz";
 
 	@include breakpoint(500px) {
-		content: 'qux';
+		content: "qux";
 	}
 
 	@include mq(500px) {
-		content: 'qux';
+		content: "qux";
 	}
 
 	@include media(500px) {
-		content: 'qux';
+		content: "qux";
 	}
 
 	@include clearfix();

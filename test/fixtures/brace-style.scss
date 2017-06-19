@@ -1,10 +1,10 @@
 @if ($foo) {
-	$bar: 'bar';
+	$bar: "bar";
 } @else {
 	$bar: false;
 }
 
 .foo,
 .bar {
-	content: 'bar';
+	content: "bar";
 }

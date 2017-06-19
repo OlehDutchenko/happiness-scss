@@ -1,5 +1,5 @@
 @function hyphenated-lowercase() {
-	@return 'foo';
+	@return "foo";
 }
 
 @function _leading-underscore($x) {
@@ -7,5 +7,5 @@
 }
 
 .foo {
-	content: hyphenated-lowercase('bar');
+	content: hyphenated-lowercase("bar");
 }

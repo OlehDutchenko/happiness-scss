@@ -7,6 +7,15 @@
 
 ---
 
+### [4.0.0] - 2017-06-19
+
+### Breaking changes in Rules
+
+1. **Attribute Quotes** - Use ~~single~~ double quotes in attribute values.
+57. **Quotes** - style `double`
+
+---
+
 ### [3.0.0] - 2017-06-13
 
 ### Breaking changes

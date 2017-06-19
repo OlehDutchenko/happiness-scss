@@ -183,7 +183,7 @@ rules:
   quotes:
     - 2
     -
-      style: single
+      style: double
   shorthand-values: 2
   single-line-per-selector: 2
   space-after-bang: 2

@@ -1,11 +1,11 @@
 .foo {
-	content: 'bar';
+	content: "bar";
 
 	@include breakpoint() {
-		content: 'baz';
+		content: "baz";
 	}
 }
 
 @mixin foo() {
-	content: 'bar';
+	content: "bar";
 }
