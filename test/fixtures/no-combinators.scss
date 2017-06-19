@@ -1,12 +1,12 @@
 .foo {
-	& > .bar {
+	&:hover > .bar {
 		content: "qux";
 	}
 }
 
 .block {
 	&__element {
-		& ~ .sub-block {
+		&:checked ~ .sub-block {
 			position: relative;
 		}
 	}
@@ -14,8 +14,8 @@
 
 .sub-block {
 	&__element {
-		+ span {
-			position: relative;
+		&:focus + span {
+			content: "focusin";
 		}
 	}
 }

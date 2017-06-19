@@ -5,3 +5,11 @@
 .qux {
 	background-image: url("bar/" + $foo);
 }
+
+.bar {
+	background-image: url(foo.png);
+}
+
+.norf {
+	background-image: url(bar/ + $foo);
+}

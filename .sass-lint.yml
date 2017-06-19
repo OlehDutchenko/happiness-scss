@@ -207,7 +207,7 @@ rules:
     - 2
     -
       include: true
-  url-quotes: 2
+  url-quotes: 0
   variable-for-property: 2
   zero-unit:
     - 2

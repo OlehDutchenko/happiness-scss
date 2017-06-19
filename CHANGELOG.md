@@ -16,8 +16,10 @@
 - [Hex Length](https://github.com/dutchenkoOleg/happiness-scss/wiki/Rules#hex-length) - rule is disabled
 - [Hex Notation](https://github.com/dutchenkoOleg/happiness-scss/wiki/Rules#hex-notation) - rule is disabled
 - [Leading Zero](https://github.com/dutchenkoOleg/happiness-scss/wiki/Rules#leading-zero) - rule is disabled
+- [Max Line Length](https://github.com/dutchenkoOleg/happiness-scss/wiki/Rules#max-line-length) - rule is disabled
 - [No Combinators](https://github.com/dutchenkoOleg/happiness-scss/wiki/Rules#no-combinators) - combinators are allowed
 - [Quotes](https://github.com/dutchenkoOleg/happiness-scss/wiki/Rules#quotes) - style `double`
+- [Url quotes](https://github.com/dutchenkoOleg/happiness-scss/wiki/Rules#url-quotes) - rule is disabled
 
 ---
 
