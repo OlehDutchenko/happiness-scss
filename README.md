@@ -333,6 +333,10 @@ _No returns value. Just scream if has errors ;)_
 
 Please read [happiness-scss / wiki / Rules](https://github.com/dutchenkoOleg/happiness-scss/wiki/Rules)
 
+**_UPD from June 19!_**  
+We already have breaking changes starting from 4.x version. They marked with _[changed in 4.x]_ badge in list of rules   
+Please read [CHANGELOG.md](https://github.com/dutchenkoOleg/happiness-scss/blob/master/CHANGELOG.md)
+
 #### Making you more happy ;)
 
 > We decided to wait a month and let us all discuss the above rules with the possibility of making adjustments.
