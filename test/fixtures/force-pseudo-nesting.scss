@@ -6,10 +6,8 @@ p {
 
 .parent {
 	.child {
-		p {
-			&::first-line {
-				font-size: 125%;
-			}
+		p::first-line {
+			font-size: 125%;
 		}
 	}
 }

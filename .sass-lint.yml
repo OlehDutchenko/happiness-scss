@@ -52,7 +52,7 @@ rules:
       include: true
   force-attribute-nesting: 2
   force-element-nesting: 2
-  force-pseudo-nesting: 2
+  force-pseudo-nesting: 0
   function-name-format:
     - 2
     -
@@ -109,7 +109,7 @@ rules:
       allow-map-identifiers: true
       allow-rgba: true
       allow-variable-identifiers: true
-  no-combinators: 2
+  no-combinators: 0
   no-css-comments: 2
   no-debug: 2
   no-disallowed-properties:

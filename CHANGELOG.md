@@ -11,8 +11,10 @@
 
 ### Breaking changes in Rules
 
-1. **Attribute Quotes** - Use ~~single~~ double quotes in attribute values.
-57. **Quotes** - style `double`
+- [Attribute Quotes](https://github.com/dutchenkoOleg/happiness-scss/wiki/Rules#attribute-quotes) - Use ~~single~~ double quotes in attribute values.
+- [Force Pseudo Nesting](https://github.com/dutchenkoOleg/happiness-scss/wiki/Rules#force-pseudo-nesting) - rule disabled
+- [No Combinators](https://github.com/dutchenkoOleg/happiness-scss/wiki/Rules#no-combinators) - combinators are allowed
+- [Quotes](https://github.com/dutchenkoOleg/happiness-scss/wiki/Rules#quotes) - style `double`
 
 ---
 
