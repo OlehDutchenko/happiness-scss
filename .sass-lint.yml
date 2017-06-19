@@ -58,31 +58,19 @@ rules:
     -
       convention: hyphenatedlowercase
       allow-leading-underscore: true
-  hex-length:
-    - 2
-    -
-      style: short
-  hex-notation:
-    - 2
-    -
-      style: lowercase
+  hex-length: 0
+  hex-notation: 0
   id-name-format: 0
   indentation:
     - 2
     -
       size: tab
-  leading-zero:
-    - 2
-    -
-      include: false
+  leading-zero: 0
   max-file-line-count:
     - 2
     -
       length: 500
-  max-line-length:
-    - 2
-    -
-      length: 120
+  max-line-length: 0
   mixin-name-format:
     - 2
     -
