@@ -2090,6 +2090,7 @@ property-units:
     - vmax
     - vmin
     - dpi
+    - fr
 ```
 
 

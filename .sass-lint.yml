@@ -167,6 +167,7 @@ rules:
         - vmax
         - vmin
         - dpi
+        - fr
   pseudo-element: 2
   quotes:
     - 2
