@@ -330,7 +330,7 @@ _No returns value. Just scream if has errors ;)_
 
 ## Rules
 
-Please read [happiness-scss / wiki / Rules](https://github.com/dutchenkoOleg/happiness-scss/blob/master/docs/Rules.md)
+Please read [docs / Rules](https://github.com/dutchenkoOleg/happiness-scss/blob/master/docs/Rules.md)
 
 ## I disagree with rule X, can you change it?
 
@@ -468,7 +468,7 @@ Sorry, there no automatic formatter.
 
 Already available solutions
 
-- [Integration with IntelliJ IDEA](https://github.com/dutchenkoOleg/happiness-scss/blob/master/docs/Integration-with-IntelliJ-IDEA.md)
+- [docs / Integration with IntelliJ IDEA](https://github.com/dutchenkoOleg/happiness-scss/blob/master/docs/Integration-with-IntelliJ-IDEA.md)
 
 Also we have [opened issue](https://github.com/dutchenkoOleg/happiness-scss/issues/3) for wanted list.
 
@@ -486,3 +486,7 @@ Please read [CHANGELOG.md](https://github.com/dutchenkoOleg/happiness-scss/blob/
 ## Contributing
 
 Please read [CONTRIBUTING.md](https://github.com/dutchenkoOleg/happiness-scss/blob/master/CONTRIBUTING.md)
+
+## Code of Conduct
+
+Please read [CODE_OF_CONDUCT.md](https://github.com/dutchenkoOleg/happiness-scss/blob/master/CODE_OF_CONDUCT.md)

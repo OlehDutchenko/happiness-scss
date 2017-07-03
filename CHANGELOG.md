@@ -16,10 +16,11 @@
 ### Added
 
 - `fr` unit in rule [Property Units](https://github.com/dutchenkoOleg/happiness-scss/blob/master/docs/Rules.md#property-units)
+- [Code of Conduct](https://github.com/dutchenkoOleg/happiness-scss/blob/master/CODE_OF_CONDUCT.md)
 
 ### Removed
 
-- wip status message
+- wip badge and status message
 
 ---
 
