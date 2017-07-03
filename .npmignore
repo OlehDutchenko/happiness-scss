@@ -45,3 +45,6 @@ thumbs.db
 
 # workwflow
 tmp/
+
+# docs
+docs/

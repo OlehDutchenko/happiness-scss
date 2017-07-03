@@ -7,6 +7,22 @@
 
 ---
 
+## [5.0.0] - 2017-07-03
+
+### Changed
+
+- Wiki pages removed to [`docs/`](https://github.com/dutchenkoOleg/happiness-scss/blob/master/docs/) folder
+
+### Added
+
+- `fr` unit in rule [Property Units](https://github.com/dutchenkoOleg/happiness-scss/blob/master/docs/Rules.md#property-units)
+
+### Removed
+
+- wip status message
+
+---
+
 ## [4.0.1] - 2017-06-19
 
 ### Added
