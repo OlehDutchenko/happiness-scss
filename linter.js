@@ -244,4 +244,3 @@ class Linter {
 // ----------------------------------------
 
 module.exports = Linter;
-

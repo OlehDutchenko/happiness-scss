@@ -24,4 +24,3 @@ const happinessScss = new Linter(configPath);
 // ----------------------------------------
 
 module.exports = happinessScss;
-

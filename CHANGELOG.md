@@ -7,6 +7,13 @@
 
 ---
 
+## [5.1.0] - 2017-09-13
+
+- relax `no-color-keywords` rule
+- bump `sass-lint` version
+
+---
+
 ## [5.0.0] - 2017-07-03
 
 ### Changed

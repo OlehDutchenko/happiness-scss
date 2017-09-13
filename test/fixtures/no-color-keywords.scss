@@ -1,5 +1,6 @@
-$new-red: #f00;
+$new-red: red;
 
 .foo {
 	color: $new-red;
+	background-color: black;
 }

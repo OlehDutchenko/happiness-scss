@@ -1,11 +1,11 @@
 .foo {
-	// not empty
+	position: relative;
 }
 
 .bar {
 	content: "baz";
 
 	.qux {
-		// position: relative
+		position: static;
 	}
 }

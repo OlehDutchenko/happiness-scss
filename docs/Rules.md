@@ -1072,7 +1072,7 @@ _sass-lint rule - [`no-color-hex`](https://github.com/sasstools/sass-lint/blob/m
 
 [↑ rules list](#table-of-contents)
 
-Colors keywords are disallowed. 
+Colors keywords are allowed, _since v5.1.0_. 
 
 _sass-lint rule - [`no-color-keywords`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/no-color-keywords.md)_
 
@@ -1080,19 +1080,11 @@ _sass-lint rule - [`no-color-keywords`](https://github.com/sasstools/sass-lint/b
 // ✓ ok
 // --------------------------------
 
-$new-red: #f00;
-
-.foo {
-	color: $new-red;
-}
-
-// ✗ avoid
-// --------------------------------
-
 $new-red: red;
 
 .foo {
 	color: $new-red;
+	background-color: black;
 }
 
 ```
@@ -1380,20 +1372,6 @@ Empty rulesets are disallowed.
 _sass-lint rule - [`no-empty-rulesets`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/no-empty-rulesets.md)_
 
 ```scss
-// ✓ ok
-// --------------------------------
-
-.foo {
-	// not empty
-}
-
-.bar {
-	content: "baz";
-
-	.qux {
-		// position: relative
-	}
-}
 
 // ✗ avoid
 // --------------------------------
@@ -1408,7 +1386,9 @@ _sass-lint rule - [`no-empty-rulesets`](https://github.com/sasstools/sass-lint/b
   .qux {}
 }
 
-.waldo {}
+.waldo {
+	// not empty
+}
 
 ```
 
