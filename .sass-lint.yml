@@ -169,10 +169,7 @@ rules:
         - dpi
         - fr
   pseudo-element: 2
-  quotes:
-    - 2
-    -
-      style: double
+  quotes: 0
   shorthand-values: 2
   single-line-per-selector: 2
   space-after-bang: 2

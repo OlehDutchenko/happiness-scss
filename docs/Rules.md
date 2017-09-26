@@ -1072,7 +1072,7 @@ _sass-lint rule - [`no-color-hex`](https://github.com/sasstools/sass-lint/blob/m
 
 [↑ rules list](#table-of-contents)
 
-Colors keywords are allowed, _since v5.1.0_. 
+Colors keywords are allowed, _relax since v5.1.0_. 
 
 _sass-lint rule - [`no-color-keywords`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/no-color-keywords.md)_
 
@@ -2181,45 +2181,9 @@ _sass-lint rule - [`pseudo-element`](https://github.com/sasstools/sass-lint/blob
 
 [↑ rules list](#table-of-contents)
 
-Use single quotes (`""`) style.
+_relax since v5.2.0_. 
 
 _sass-lint rule - [`quotes`](https://github.com/sasstools/sass-lint/blob/master/docs/rules/quotes.md)_
-
-**In version 4.x - rule was changed from single to double quotes**  
-Reasons of changing:
-
-- Double quotes are more common for working with markup and inline styles.
-- Most editors have built-in tools with code generation based on double quotes
-
-```scss
-// ✓ ok
-// --------------------------------
-
-.foo {
-	content: "bar";
-}
-
-span {
-	&[lang="pt"] {
-		text-decoration: underline;
-	}
-}
-
-
-// ✗ avoid
-// --------------------------------
-
-.foo {
-	content: "bar";
-}
-
-span {
-	&[lang="pt"] {
-		text-decoration: underline;
-	}
-}
-
-```
 
 ---
 

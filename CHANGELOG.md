@@ -7,6 +7,12 @@
 
 ---
 
+## [5.2.0] - 2017-09-26
+
+- relax `qoutes` rule
+
+---
+
 ## [5.1.0] - 2017-09-13
 
 - relax `no-color-keywords` rule
