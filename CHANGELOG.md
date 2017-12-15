@@ -7,7 +7,7 @@
 
 ---
 
-## [5.2.2] - 2017-09-26
+## [5.2.2] - 2017-12-15
 
 - external [`happiness-scss-config`](https://github.com/dutchenkoOleg/happiness-scss-config) file
 
