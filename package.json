@@ -31,7 +31,7 @@
     "sass-lint"
   ],
   "dependencies": {
-    "happiness-scss-config": "^1.0.0",
+    "happiness-scss-config": "^1.0.1",
     "sass-lint": "^1.12.1"
   },
   "devDependencies": {

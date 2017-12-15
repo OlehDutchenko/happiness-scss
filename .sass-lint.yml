@@ -1,2 +1,2 @@
 options:
-  config-file: ./node-modules/happiness-scss-config/.sass-lint.yml
+  config-file: ./node_modules/happiness-scss-config/.sass-lint.yml
