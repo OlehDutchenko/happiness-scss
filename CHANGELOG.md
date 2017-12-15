@@ -7,6 +7,12 @@
 
 ---
 
+## [5.2.2] - 2017-09-26
+
+- external [`happiness-scss-config`](https://github.com/dutchenkoOleg/happiness-scss-config) file
+
+---
+
 ## [5.2.0] - 2017-09-26
 
 - relax `qoutes` rule
